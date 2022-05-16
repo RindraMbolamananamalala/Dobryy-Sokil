@@ -13,7 +13,6 @@ __status__ = "Prototype"
 
 from enum import Enum
 
-
 from PRESENTATION.HMI.dobryy_sokil_HMI import Ui_MainWindow
 
 
@@ -58,11 +57,10 @@ class DobryySokilView:
             # no match found for the couple (widget, event) represented by the Id : widget_event_id
             print('An internal error was occurred!')
 
-
-
     """
     THE SPECIFIC RULES TO APPLY TO THE HMI PART
     """
+
     def PRESENTATION_HMI_R001(self):
         """
         If the content of the Input Text for the research is empty, the Button for the launch of the Research must be disabled.
@@ -73,3 +71,10 @@ class DobryySokilView:
         else:
             self.get_dobryy_sokil_hmi().get_button_launch_research().setDisabled(False)
 
+    def show_image(self, picture_path: str):
+        """
+        Showing a picture on the Area Picture found part
+        :param picture_path: The path of the Picture to show
+        :return: None
+        """
+        self.get_dobryy_sokil_hmi().update_area_picture_found(picture_path)

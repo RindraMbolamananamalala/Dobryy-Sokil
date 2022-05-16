@@ -327,3 +327,21 @@ class Ui_MainWindow(object):
         item = QStandardItem(content)
         model.appendRow(item)
         self.list_research_results.setModel(model)
+
+    def update_area_picture_found(self, picture_path: str):
+        """
+        Updating the content of the area dedicated for the presentation of the selected picture among
+        those found after the Research process
+        :param picture_path: The path of the picture selected
+        :return: None
+        """
+        raw_pixmap = QPixmap(picture_path)
+        pixmap_final = raw_pixmap.scaled(451
+                                         , 451
+                                         # Keeping the Aspect Ratio normally if  the Picture orientation is "Portrait",
+                                         # keeping the Aspect Ration by expanding if the Picture orientation is
+                                         # "Landscape"
+                                         , (Qt.KeepAspectRatioByExpanding, Qt.KeepAspectRatio)
+                                         [(raw_pixmap.width() > raw_pixmap.height())]
+                                         )
+        self.get_area_picture_found().setPixmap(pixmap_final)
