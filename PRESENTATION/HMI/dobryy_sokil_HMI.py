@@ -316,7 +316,6 @@ class Ui_MainWindow(object):
         self.button_refresh_list_research_results.setText("")
         self.area_picture_found.setText("")
 
-
     def update_list_research_results_content(self, content: str):
         """
         Updating the content of the List View dedicated to the results of the Research with a given
