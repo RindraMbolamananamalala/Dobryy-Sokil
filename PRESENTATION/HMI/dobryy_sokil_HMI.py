@@ -316,7 +316,14 @@ class Ui_MainWindow(object):
         self.button_refresh_list_research_results.setText("")
         self.area_picture_found.setText("")
 
+
     def update_list_research_results_content(self, content: str):
+        """
+        Updating the content of the List View dedicated to the results of the Research with a given
+        content
+        :param content: The new content to be deployed over the List View for the Research results
+        :return: None
+        """
         model = QStandardItemModel()
         item = QStandardItem(content)
         model.appendRow(item)
