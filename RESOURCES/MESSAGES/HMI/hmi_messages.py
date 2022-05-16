@@ -10,6 +10,7 @@ __maintainer__ = "Rindra Mbolamananamalala"
 __email__ = "rindraibi@gmail.com"
 __status__ = "Prototype"
 
+
 class Messages:
     HMI_MAIN_WINDOW_TITLE = "Добрий Сокіл"
     HMI_BUTTON_LAUNCH_RESEARCH_TOOLTIP = "Go!"
