@@ -24,6 +24,9 @@ from RESOURCES.MESSAGES.HMI.hmi_messages import Messages as HMIMessages
 
 class Ui_MainWindow(object):
 
+    AREA_PICTURE_FOUND_WIDTH = 451
+    AREA_PICTURE_FOUND_HEIGHT = 451
+
     def set_main_window(self, main_window: QMainWindow):
         self.main_window = main_window
 
@@ -269,7 +272,12 @@ class Ui_MainWindow(object):
         self.container_image_result.setFrameShadow(QFrame.Raised)
         self.area_picture_found = QLabel(self.container_image_result)
         self.area_picture_found.setObjectName(u"area_picture_found")
-        self.area_picture_found.setGeometry(QRect(40, 70, 451, 451))
+        self.area_picture_found.setGeometry(
+            QRect(40
+                  , 70
+                  , Ui_MainWindow.AREA_PICTURE_FOUND_WIDTH
+                  , Ui_MainWindow.AREA_PICTURE_FOUND_HEIGHT)
+        )
         self.area_picture_found.setPixmap(QPixmap(u"RESOURCES/Images/no_element_found.JPG"))
 
         """
@@ -336,8 +344,8 @@ class Ui_MainWindow(object):
         :return: None
         """
         raw_pixmap = QPixmap(picture_path)
-        pixmap_final = raw_pixmap.scaled(451
-                                         , 451
+        pixmap_final = raw_pixmap.scaled(Ui_MainWindow.AREA_PICTURE_FOUND_WIDTH
+                                         , Ui_MainWindow.AREA_PICTURE_FOUND_HEIGHT
                                          # Keeping the Aspect Ratio normally if  the Picture orientation is "Portrait",
                                          # keeping the Aspect Ration by expanding if the Picture orientation is
                                          # "Landscape"
