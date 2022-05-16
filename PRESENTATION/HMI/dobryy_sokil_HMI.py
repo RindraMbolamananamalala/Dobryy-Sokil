@@ -19,6 +19,9 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
+from RESOURCES.MESSAGES.HMI.hmi_messages import Messages as HMIMessages
+
+
 class Ui_MainWindow(object):
 
     def set_main_window(self, main_window: QMainWindow):
@@ -290,28 +293,30 @@ class Ui_MainWindow(object):
         Re-translating  the UI
         :param main_window: The main window to be retranslated
         """
-        main_window.setWindowTitle(QCoreApplication.translate("Добрий Сокіл"
-                                                              , u"Добрий Сокіл"
+        main_window.setWindowTitle(QCoreApplication.translate(HMIMessages.HMI_MAIN_WINDOW_TITLE
+                                                              , HMIMessages.HMI_MAIN_WINDOW_TITLE
                                                               , None)
                                    )
         self.label_logo.setText("")
         # if QT_CONFIG(tooltip)
-        self.button_launch_research.setToolTip(QCoreApplication.translate("MainWindow"
-                                                                          , u"Go!"
-                                                                          , None)
-                                               )
+        self.button_launch_research.setToolTip(
+            QCoreApplication.translate("MainWindow"
+                                       , HMIMessages.HMI_BUTTON_LAUNCH_RESEARCH_TOOLTIP
+                                       , None)
+        )
         # endif // QT_CONFIG(tooltip)
         self.button_launch_research.setText("")
         # if QT_CONFIG(tooltip)
-        self.button_refresh_list_research_results.setToolTip(QCoreApplication.translate("MainWindow"
-                                                                                        , u"Refresh"
-                                                                                        , None)
-                                                             )
+        self.button_refresh_list_research_results.setToolTip(
+            QCoreApplication.translate("MainWindow"
+                                       , HMIMessages.HMI_BUTTON_REFRESH_RESEARCH_RESULT_TOOLTIP
+                                       , None)
+        )
         # endif // QT_CONFIG(tooltip)
         self.button_refresh_list_research_results.setText("")
         self.area_picture_found.setText("")
 
-    def update_list_research_results_content(self, content : str):
+    def update_list_research_results_content(self, content: str):
         model = QStandardItemModel()
         item = QStandardItem(content)
         model.appendRow(item)

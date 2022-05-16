@@ -1,0 +1,4 @@
+class Messages:
+    HMI_MAIN_WINDOW_TITLE = "Добрий Сокіл"
+    HMI_BUTTON_LAUNCH_RESEARCH_TOOLTIP = "Go!"
+    HMI_BUTTON_REFRESH_RESEARCH_RESULT_TOOLTIP = "Refresh"
