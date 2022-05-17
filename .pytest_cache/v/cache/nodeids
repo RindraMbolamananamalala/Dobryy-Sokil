@@ -1,0 +1,4 @@
+[
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/RINDRA_SA/test_addNewRindra.py::TestAddNewRindra::test_add_new_rindra",
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/RINDRA_SA/test_getAllRindras.py::TestGetAllRindras::test_get_all_rindras"
+]

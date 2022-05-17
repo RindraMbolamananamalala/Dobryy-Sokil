@@ -23,7 +23,6 @@ from RESOURCES.MESSAGES.HMI.hmi_messages import Messages as HMIMessages
 
 
 class Ui_MainWindow(object):
-
     AREA_PICTURE_FOUND_WIDTH = 451
     AREA_PICTURE_FOUND_HEIGHT = 451
 
@@ -63,6 +62,12 @@ class Ui_MainWindow(object):
     def get_area_picture_found(self):
         return self.area_picture_found
 
+    def set_root_folder_browser(self, root_folder_browser: QPlainTextEdit):
+        self.root_folder_browser = root_folder_browser
+
+    def get_root_folder_browser(self) -> QPlainTextEdit:
+        return self.root_folder_browser
+
     def __init__(self, main_window):
         """
         Setting up the UI
@@ -74,7 +79,7 @@ class Ui_MainWindow(object):
         """
         if not main_window.objectName():
             main_window.setObjectName(u"Добрий Сокіл")
-        main_window.resize(947, 838)
+        main_window.resize(947, 950)
         self.set_main_window(main_window)
         self.central_widget = QWidget(main_window)
         self.central_widget.setObjectName(u"centralwidget")
@@ -98,11 +103,74 @@ class Ui_MainWindow(object):
             QPixmap(u"RESOURCES/Images/\u0414\u043e\u0431\u0440\u044b\u0439_\u0421\u043e\u043a\u043e\u043b_LOGO.JPG"))
 
         """
+        Management of the part dedicated to the "Root Folder" for the Research  
+        """
+        self.container_root_folder_for_the_research = QFrame(self.central_widget)
+        self.container_root_folder_for_the_research.setObjectName(u"container_root_folder_for_the_research")
+        self.container_root_folder_for_the_research.setGeometry(QRect(20, 210, 901, 51))
+        self.container_root_folder_for_the_research.setStyleSheet(u"background-color: gray;\n"
+                                                                  "border-width: 1;\n"
+                                                                  "border-radius: 3;\n"
+                                                                  "border-style: solid;\n"
+                                                                  "border-color: orange;")
+        self.container_root_folder_for_the_research.setFrameShape(QFrame.StyledPanel)
+        self.container_root_folder_for_the_research.setFrameShadow(QFrame.Raised)
+        self.container_root_folder_for_the_research = QFrame(self.central_widget)
+        self.container_root_folder_for_the_research.setObjectName(u"container_root_folder_for_the_research")
+        self.container_root_folder_for_the_research.setGeometry(QRect(20, 210, 901, 61))
+        self.container_root_folder_for_the_research.setStyleSheet(u"QFrame{\n"
+                                                                  "	background-color: gray;\n"
+                                                                  "	border-width: 1;\n"
+                                                                  "	border-radius: 3;\n"
+                                                                  "	border-style: solid;\n"
+                                                                  "	border-color: orange;\n"
+                                                                  "}")
+        self.container_root_folder_for_the_research.setFrameShape(QFrame.StyledPanel)
+        self.container_root_folder_for_the_research.setFrameShadow(QFrame.Raised)
+        # The Root folder Browser
+        self.root_folder_browser = QPlainTextEdit(self.container_root_folder_for_the_research)
+        self.root_folder_browser.setObjectName(u"root_folder_browser")
+        self.root_folder_browser.setGeometry(QRect(20, 10, 801, 41))
+        font1 = QFont()
+        font1.setFamily(u"Arial")
+        font1.setPointSize(12)
+        self.root_folder_browser.setFont(font1)
+        self.root_folder_browser.setStyleSheet(u"QPlainTextEdit\n"
+                                               "{\n"
+                                               "	background-color:white;\n"
+                                               "	border-width: 1;\n"
+                                               "	border-radius: 3;\n"
+                                               "	border-style: solid;\n"
+                                               "	border-color: orange;\n"
+                                               "}")
+        self.root_folder_browser.setReadOnly(True)
+        # PRESENTATION_HMI_R003 : By default, the Root Folder for the Research is set to the Root folder of
+        # the Disk “C:\”
+        self.root_folder_browser.setPlainText("C/:")
+        # The Button for the Root folder Browser
+        self.button_open_root_folder_browser = QPushButton(self.container_root_folder_for_the_research)
+        self.button_open_root_folder_browser.setObjectName(u"button_open_root_folder_browser")
+        self.button_open_root_folder_browser.setGeometry(QRect(830, 10, 61, 41))
+        self.button_open_root_folder_browser.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_open_root_folder_browser.setStyleSheet(u"QPushButton\n"
+                                                           "{\n"
+                                                           "	background-color : orange;\n"
+                                                           "}")
+        icon2 = QIcon()
+        icon2.addFile(u"RESOURCES/Images/root_folder_button.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.button_open_root_folder_browser.setIcon(icon2)
+        self.button_open_root_folder_browser.setToolTip(QCoreApplication.translate("MainWindow", u"Root folder", None))
+        self.button_open_root_folder_browser.setText("")
+        # clicking on the Button opening the Root folder Browser means wanting to update the
+        # desired Root folder for the Research
+        self.button_open_root_folder_browser.clicked.connect(self.update_root_folder)
+
+        """
         Management of the part dedicated to the "Application Business" of the Application
         """
         self.container_application_business = QFrame(self.central_widget)
         self.container_application_business.setObjectName(u"container_application_business")
-        self.container_application_business.setGeometry(QRect(0, 170, 941, 621))
+        self.container_application_business.setGeometry(QRect(0, 280, 941, 621))
         self.container_application_business.setFrameShape(QFrame.StyledPanel)
         self.container_application_business.setFrameShadow(QFrame.Raised)
         # The "research" part
@@ -323,6 +391,16 @@ class Ui_MainWindow(object):
         # endif // QT_CONFIG(tooltip)
         self.button_refresh_list_research_results.setText("")
         self.area_picture_found.setText("")
+
+    def update_root_folder(self):
+        """
+        First, opening the Root folder Browser, then affecting the path of the chosen folder as the new one
+        within the text part related to the previous Browser
+        :return: None
+        """
+        root_folder_path = QFileDialog.getExistingDirectory(self.container_root_folder_for_the_research,
+                                                            "Select Directory")
+        self.get_root_folder_browser().setPlainText(root_folder_path)
 
     def update_list_research_results_content(self, content: str):
         """
