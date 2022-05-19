@@ -402,16 +402,27 @@ class Ui_MainWindow(object):
                                                             "Select Directory")
         self.get_root_folder_browser().setPlainText(root_folder_path)
 
-    def update_list_research_results_content(self, content: str):
+    def update_list_research_results_content(self, content: []):
         """
-        Updating the content of the List View dedicated to the results of the Research with a given
-        content
-        :param content: The new content to be deployed over the List View for the Research results
+        Updating the content of the List View dedicated to the results of the Research
+        :param content: The list of "images' information", information respecting the specific structure :
+            <image>{
+                    "name": <image_name>,
+                    "extension": <image_extension>,
+                    "absolute_path": <image_absolute_path>,
+            }
         :return: None
         """
         model = QStandardItemModel()
-        item = QStandardItem(content)
-        model.appendRow(item)
+        for images_information in content:
+            image_name = images_information["name"]
+            image_extension = images_information["extension"]
+            image_absolute_path = images_information["absolute_path"]
+            item = QStandardItem(image_name
+                                 + "."
+                                 + image_extension)
+            item.setToolTip(image_absolute_path)
+            model.appendRow(item)
         self.list_research_results.setModel(model)
 
     def update_area_picture_found(self, picture_path: str):
@@ -431,3 +442,16 @@ class Ui_MainWindow(object):
                                          [(raw_pixmap.width() > raw_pixmap.height())]
                                          )
         self.get_area_picture_found().setPixmap(pixmap_final)
+
+    def show_selected_image(self, index):
+        """
+        Getting the ToolTip's value of the selected item, representing the Absolute path of the image concerned,
+        and then updating the content of the area dedicated for the image found from this Absolute path
+        :param index: the index (within the model of the list view dedicated to the results) of the row (item)
+        corresponding to the image
+        :return: None
+        """
+        self.update_area_picture_found(
+            self.get_list_research_results()
+                .model().item(index.row()).toolTip()
+        )

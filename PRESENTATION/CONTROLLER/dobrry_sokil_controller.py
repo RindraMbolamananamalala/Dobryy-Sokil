@@ -13,6 +13,10 @@ __status__ = "Prototype"
 
 from PRESENTATION.VIEW.dobryy_sokil_view import DobryySokilView, DobryySokilViewWidgetEventId
 
+from BUSINESS.CONSTRAINTS.CONVERTER.image_converter import image_file_paths_to_image_domain_objects
+
+from UTILS.image_utils import get_all_images_within_a_folder
+
 
 class DobrrySokilController:
     def set_dobryy_sokil_view(self, dobryy_sokil_view: DobryySokilView):
@@ -30,8 +34,20 @@ class DobrrySokilController:
         )
 
     def event_button_launch_research_clicked(self):
-        # Temporary, to be managed later
+        """Will be "seriously" finalized according to the actual needs later """
+        # root_folder_path = self.get_dobryy_sokil_view().get_root_folder_path()
+        # images_absolutes_path_found = get_all_images_within_a_folder(root_folder_path)
+        # images_found = image_file_paths_to_image_domain_objects(images_absolutes_path_found)
+        # list_structured_image_information = []
+        # for image in images_found:
+        #     structured_image_information = {
+        #         "name": image.get_name(),
+        #         "extension": image.get_extension(),
+        #         "absolute_path": image.get_absolute_path()
+        #     }
+        #     list_structured_image_information.append(structured_image_information)
+        # self.get_dobryy_sokil_view().load_images_information_results(list_structured_image_information)
+        """butt for the now, just..."""
         pass
-
 
 

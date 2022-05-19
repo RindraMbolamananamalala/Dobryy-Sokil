@@ -23,6 +23,7 @@ class DobryySokilViewWidgetEventId(Enum):
     BUTTON_LAUNCH_RESEARCH_CLICKED = 1
     BUTTON_REFRESH_LIST_RESEARCH_RESULTS_CLICKED = 2
     TYPING_ON_INPUT_TEXT_TO_RESEARCH = 3
+    ITEM_WITHIN_LIST_RESEARCH_RESULTS_SELECTED = 4
 
 
 class DobryySokilView:
@@ -34,9 +35,14 @@ class DobryySokilView:
 
     def __init__(self, window: Ui_MainWindow):
         self.set_dobryy_sokil_hmi(window)
+        # rule : PRESENTATION_HMI_R001
         self.manage_event(DobryySokilViewWidgetEventId.TYPING_ON_INPUT_TEXT_TO_RESEARCH, self.PRESENTATION_HMI_R001)
-        # at the start, disabling the Button that launches the Research
+        # also, at the start, disabling the Button that launches the Research
         self.PRESENTATION_HMI_R001()
+        # linking the external event of selecting an item within the results' list view
+        # with the internal action of showing the corresponding image on the dedicated area
+        self.manage_event(DobryySokilViewWidgetEventId.ITEM_WITHIN_LIST_RESEARCH_RESULTS_SELECTED
+                          , self.load_image_on_the_image_area)
 
     def manage_event(self, widget_event_id, event):
         """
@@ -53,6 +59,10 @@ class DobryySokilView:
             # User is typing on the Input Text dedicated for the Research
             # Rule PRESENTATION_HMI_R001 must be respected
             self.get_dobryy_sokil_hmi().get_input_text_to_research().textChanged.connect(self.PRESENTATION_HMI_R001)
+        elif widget_event_id == DobryySokilViewWidgetEventId.ITEM_WITHIN_LIST_RESEARCH_RESULTS_SELECTED:
+            # an Item is selected within the list view for the results,
+            # therefore, loading its corresponding image on the dedicated area
+            self.get_dobryy_sokil_hmi().get_list_research_results().clicked.connect(event)
         else:
             # no match found for the couple (widget, event) represented by the Id : widget_event_id
             print('An internal error was occurred!')
@@ -71,10 +81,39 @@ class DobryySokilView:
         else:
             self.get_dobryy_sokil_hmi().get_button_launch_research().setDisabled(False)
 
+    def get_root_folder_path(self):
+        """
+        :return: The path of the Root Folder contained in the Root Folder Browser
+        """
+        return self.get_dobryy_sokil_hmi().get_root_folder_browser().toPlainText()
+
     def show_image(self, picture_path: str):
         """
-        Showing a picture on the Area Picture found part
+        Showing an image on the "Area Picture found"-dedicated part
         :param picture_path: The path of the Picture to show
         :return: None
         """
         self.get_dobryy_sokil_hmi().update_area_picture_found(picture_path)
+
+    def load_images_information_results(self, images_information: []):
+        """
+        Loading all the information on the images found as the results of the Research process in the results
+        list view
+        :param images_information: The list of the images' information, structured as  :
+            <image>{
+                "name": <image_name>,
+                "extension": <image_extension>,
+                "absolute_path": <image_absolute_path>,
+            }
+        :return: None
+        """
+        self.get_dobryy_sokil_hmi().update_list_research_results_content(images_information)
+
+    def load_image_on_the_image_area(self, index):
+        """
+        Load an image on the dedicated area, given its corresponding index within the list of results
+        :param index: The index within the list of results corresponding to the image to be loaded
+        :return: None
+        """
+        self.get_dobryy_sokil_hmi().show_selected_image(index)
+
