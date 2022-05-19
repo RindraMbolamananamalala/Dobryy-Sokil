@@ -39,6 +39,7 @@ class Image(DobryySokilDO):
         :return: The absolute path of the file containing the Image
         """
         return self.get_location_path().replace("/", "\\") \
+               + "\\" \
                + self.get_name() \
                + "." \
                + self.get_extension()
