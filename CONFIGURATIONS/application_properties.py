@@ -5,6 +5,12 @@ application_properties.py: The python file dedicated to the particular process o
 the current Profile & current Profile's properties of the Project
 """
 
+__author__ = "Rindra Mbolamananamalala"
+__version__ = "1.0.1"
+__maintainer__ = "Rindra Mbolamananamalala"
+__email__ = "rindraibi@gmail.com"
+__status__ = "Prototype"
+
 import configparser
 
 config = configparser.ConfigParser()
