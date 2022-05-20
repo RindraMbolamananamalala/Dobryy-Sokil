@@ -15,7 +15,8 @@ from BUSINESS.MODEL.DOMAIN_OBJECTS.image import Image
 
 def image_file_path_to_image_domain_object(image_file_path: str):
     """
-    Converts an image's file path into an image DO
+    Converts an image's file path into an image DO.
+
     :param image_file_path: The file path of the image to be converted
     :return: the image DO obtained from the given file path of the image
     """
@@ -27,6 +28,12 @@ def image_file_path_to_image_domain_object(image_file_path: str):
 
 
 def image_file_paths_to_image_domain_objects(image_file_paths: [str]):
+    """
+    Converts a list of images' file paths into a list of image DOs.
+
+    :param image_file_paths: The list of file paths of images to be converted
+    :return: a list of image DOs obtained from the given list of file paths of each image that it contains
+    """
     images_to_return = []
     for image_file_path in image_file_paths:
         images_to_return.append(image_file_path_to_image_domain_object(image_file_path))

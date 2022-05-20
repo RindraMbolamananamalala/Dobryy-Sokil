@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-image.py: The class file dedicated to the "Model:Image" part of the MVC pattern implemented within
+image.py: The python file dedicated to the "Model:Image" part of the MVC pattern implemented within
 the "BUSINESS" layer of the Project, and at the same time one of the Project's DOs
 """
 
@@ -36,6 +36,7 @@ class Image(DobryySokilDO):
 
     def get_absolute_path(self) -> str:
         """
+
         :return: The absolute path of the file containing the Image
         """
         return self.get_location_path().replace("/", "\\") \
@@ -49,6 +50,7 @@ class Image(DobryySokilDO):
                  , name: str
                  , extension: str):
         """
+
         :param location_path: The path of the directory where the file containing the Image is located
         :param name: The filename of the file containing the Image
         :param extension: The extension of the file containing the Image

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-"""dobryy_sokil_HMI.py: The dedicated class file for the graphical definition of the Main Window of the Добрий Сокіл
+"""
+dobryy_sokil_HMI.py: The python file dedicated to the graphical definition of the Main Window of the Добрий Сокіл
 project's Human-Machine Interface
 """
 
@@ -70,8 +71,9 @@ class Ui_MainWindow(object):
 
     def __init__(self, main_window):
         """
-        Setting up the UI
-        :param main_window: a blank main window to be assigned to the set of settings
+        Setting up the UI.
+
+        :param main_window: a blank main window to be associated to the set of settings
         """
 
         """
@@ -366,7 +368,8 @@ class Ui_MainWindow(object):
 
     def retranslate_ui(self, main_window):
         """
-        Re-translating  the UI
+        Re-translating  the UI.
+
         :param main_window: The main window to be retranslated
         """
         main_window.setWindowTitle(QCoreApplication.translate(HMIMessages.HMI_MAIN_WINDOW_TITLE
@@ -395,7 +398,8 @@ class Ui_MainWindow(object):
     def update_root_folder(self):
         """
         First, opening the Root folder Browser, then affecting the path of the chosen folder as the new one
-        within the text part related to the previous Browser
+        within the text part related to the previous Browser.
+
         :return: None
         """
         root_folder_path = QFileDialog.getExistingDirectory(self.container_root_folder_for_the_research,
@@ -404,7 +408,8 @@ class Ui_MainWindow(object):
 
     def update_list_research_results_content(self, content: []):
         """
-        Updating the content of the List View dedicated to the results of the Research
+        Updating the content of the List View dedicated to the results of the Research.
+
         :param content: The list of "images' information", information respecting the specific structure :
             <image>{
                     "name": <image_name>,
@@ -428,7 +433,8 @@ class Ui_MainWindow(object):
     def update_area_picture_found(self, picture_path: str):
         """
         Updating the content of the area dedicated for the presentation of the selected picture among
-        those found after the Research process
+        those found after the Research process.
+
         :param picture_path: The path of the picture selected
         :return: None
         """
@@ -446,7 +452,9 @@ class Ui_MainWindow(object):
     def show_selected_image(self, index):
         """
         Getting the ToolTip's value of the selected item, representing the Absolute path of the image concerned,
-        and then updating the content of the area dedicated for the image found from this Absolute path
+        and then updating the content of the area dedicated for the presentation of the  image found from this Absolute
+        path.
+
         :param index: the index (within the model of the list view dedicated to the results) of the row (item)
         corresponding to the image
         :return: None

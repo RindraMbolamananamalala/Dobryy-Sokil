@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-dobryy_sokil_controller.py: The dedicated class file for the "Controller" part of the MVC pattern implemented within
+dobryy_sokil_controller.py: The python file dedicated to the "Controller" part of the MVC pattern implemented within
 the "PRESENTATION" layer of the Project
 """
 
@@ -26,6 +26,10 @@ class DobrrySokilController:
         return self.dobryy_sokil_view
 
     def __init__(self, dobryy_sokil_view: DobryySokilView):
+        """
+
+        :param dobryy_sokil_view: The Dobryy Sokil' View Part to be associated with the current Dobryy Sokil's Controller
+        """
         # Preparing the View Part
         self.set_dobryy_sokil_view(dobryy_sokil_view)
         self.get_dobryy_sokil_view().manage_event(
@@ -47,7 +51,7 @@ class DobrrySokilController:
         #     }
         #     list_structured_image_information.append(structured_image_information)
         # self.get_dobryy_sokil_view().load_images_information_results(list_structured_image_information)
-        """butt for the now, just..."""
+        """but for the now, just..."""
         pass
 
 

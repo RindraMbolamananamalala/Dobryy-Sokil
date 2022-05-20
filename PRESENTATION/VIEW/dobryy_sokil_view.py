@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-dobryy_sokil_view.py: The dedicated class file for the "View" part of the MVC pattern implemented within
+dobryy_sokil_view.py: The python file dedicated to the "View" part of the MVC pattern implemented within
 the "PRESENTATION" layer of the Project
 """
 
@@ -18,7 +18,7 @@ from PRESENTATION.HMI.dobryy_sokil_HMI import Ui_MainWindow
 
 class DobryySokilViewWidgetEventId(Enum):
     """
-    The Enum dedicated to the representation of the couple (Widget, Event) with a unique Id
+    The Enum dedicated to the representation of the couple (Widget, External_Event) with a unique Id
     """
     BUTTON_LAUNCH_RESEARCH_CLICKED = 1
     BUTTON_REFRESH_LIST_RESEARCH_RESULTS_CLICKED = 2
@@ -44,10 +44,12 @@ class DobryySokilView:
         self.manage_event(DobryySokilViewWidgetEventId.ITEM_WITHIN_LIST_RESEARCH_RESULTS_SELECTED
                           , self.load_image_on_the_image_area)
 
-    def manage_event(self, widget_event_id, event):
+    def manage_event(self, widget_event_id, action):
         """
+
         :param widget_event_id: The id representing the concerned couple (widget, external event)
-        :param event: The internal event to be connected to the Widget after the corresponding external event
+        :param action: The internal action to be connected, and then performed, to the Widget after the corresponding
+        external event
         """
         if widget_event_id == DobryySokilViewWidgetEventId.BUTTON_LAUNCH_RESEARCH_CLICKED:
             # the Button for the launch of the Research has been clicked
@@ -70,10 +72,10 @@ class DobryySokilView:
     """
     THE SPECIFIC RULES TO APPLY TO THE HMI PART
     """
-
     def PRESENTATION_HMI_R001(self):
         """
-        If the content of the Input Text for the research is empty, the Button for the launch of the Research must be disabled.
+        If the content of the Input Text for the research is empty, the Button for the launch of the Research must be
+        disabled.
         """
         if self.get_dobryy_sokil_hmi().get_input_text_to_research().toPlainText() is None \
                 or len(self.get_dobryy_sokil_hmi().get_input_text_to_research().toPlainText()) < 1:
@@ -83,13 +85,15 @@ class DobryySokilView:
 
     def get_root_folder_path(self):
         """
+
         :return: The path of the Root Folder contained in the Root Folder Browser
         """
         return self.get_dobryy_sokil_hmi().get_root_folder_browser().toPlainText()
 
     def show_image(self, picture_path: str):
         """
-        Showing an image on the "Area Picture found"-dedicated part
+        Showing an image on the "Area Picture found"-dedicated part.
+
         :param picture_path: The path of the Picture to show
         :return: None
         """
@@ -98,7 +102,8 @@ class DobryySokilView:
     def load_images_information_results(self, images_information: []):
         """
         Loading all the information on the images found as the results of the Research process in the results
-        list view
+        list view.
+
         :param images_information: The list of the images' information, structured as  :
             <image>{
                 "name": <image_name>,
@@ -111,7 +116,8 @@ class DobryySokilView:
 
     def load_image_on_the_image_area(self, index):
         """
-        Load an image on the dedicated area, given its corresponding index within the list of results
+        Loading an image on the dedicated area, given its corresponding index within the list of results.
+
         :param index: The index within the list of results corresponding to the image to be loaded
         :return: None
         """
