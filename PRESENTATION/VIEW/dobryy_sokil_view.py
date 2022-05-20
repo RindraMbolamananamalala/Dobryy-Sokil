@@ -53,10 +53,10 @@ class DobryySokilView:
         """
         if widget_event_id == DobryySokilViewWidgetEventId.BUTTON_LAUNCH_RESEARCH_CLICKED:
             # the Button for the launch of the Research has been clicked
-            self.get_dobryy_sokil_hmi().get_button_launch_research().clicked.connect(event)
+            self.get_dobryy_sokil_hmi().get_button_launch_research().clicked.connect(action)
         elif widget_event_id == DobryySokilViewWidgetEventId.BUTTON_REFRESH_LIST_RESEARCH_RESULTS_CLICKED:
             # the Button for the Refresh process of the Research results list has been clicked
-            self.get_dobryy_sokil_hmi().get_button_refresh_list_research_results().clicked.connect(event)
+            self.get_dobryy_sokil_hmi().get_button_refresh_list_research_results().clicked.connect(action)
         elif widget_event_id == DobryySokilViewWidgetEventId.TYPING_ON_INPUT_TEXT_TO_RESEARCH:
             # User is typing on the Input Text dedicated for the Research
             # Rule PRESENTATION_HMI_R001 must be respected
@@ -64,7 +64,7 @@ class DobryySokilView:
         elif widget_event_id == DobryySokilViewWidgetEventId.ITEM_WITHIN_LIST_RESEARCH_RESULTS_SELECTED:
             # an Item is selected within the list view for the results,
             # therefore, loading its corresponding image on the dedicated area
-            self.get_dobryy_sokil_hmi().get_list_research_results().clicked.connect(event)
+            self.get_dobryy_sokil_hmi().get_list_research_results().clicked.connect(action)
         else:
             # no match found for the couple (widget, event) represented by the Id : widget_event_id
             print('An internal error was occurred!')
