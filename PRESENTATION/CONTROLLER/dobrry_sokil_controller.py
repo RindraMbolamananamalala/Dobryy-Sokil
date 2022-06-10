@@ -13,10 +13,6 @@ __status__ = "Prototype"
 
 from PRESENTATION.VIEW.dobryy_sokil_view import DobryySokilView, DobryySokilViewWidgetEventId
 
-from BUSINESS.CONSTRAINTS.CONVERTER.image_converter import image_file_paths_to_image_domain_objects
-
-from UTILS.image_utils import get_all_images_within_a_folder
-
 
 class DobrrySokilController:
     def set_dobryy_sokil_view(self, dobryy_sokil_view: DobryySokilView):
