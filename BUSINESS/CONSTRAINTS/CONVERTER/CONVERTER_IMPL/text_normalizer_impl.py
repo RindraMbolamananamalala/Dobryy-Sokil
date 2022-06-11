@@ -17,26 +17,34 @@ from BUSINESS.CONSTRAINTS.CONVERTER.CONVERTER_INTF.text_normalizer_intf import T
 
 class TextNormalizerImpl(TextNormalizerIntf):
     def normalize(self, text_to_normalize: str):
-        """
-        Transforming a text into one canonical form, this latter chosen according to the specific needs
-        within the Dobryy Sokil Project.
-        :param text_to_normalize: The text to normalize
-        :return: the normalized version of the text put in parameter
-        """
+        if text_to_normalize is not None:
+            """
+            Transforming a text into one canonical form, this latter chosen according to the specific needs
+            within the Dobryy Sokil Project.
+            :param text_to_normalize: The text to normalize
+            :return: the normalized version of the text put in parameter
+            """
 
-        # STEP 1 : Converting all the letters to Lower Case
-        text_normalized = text_to_normalize.lower()
+            # STEP 1 : Converting all the letters to Lower Case
+            text_normalized = text_to_normalize.lower()
 
-        # STEP 2 : Assuming that they are not sufficiently relevant to the understanding process of the text
-        # to be normalized, let's remove all the Numbers
-        text_normalized = re.sub(r'\d+', '', text_normalized)
+            # STEP 2 : Assuming that they are not sufficiently relevant to the understanding process of the text
+            # to be normalized, let's remove all the Numbers
+            text_normalized = re.sub(r'\d+', '', text_normalized)
 
-        # STEP 3: Assuming that they are not sufficiently relevant to the understanding process of the text
-        # to be normalized, just like with the Numbers, let's remove all the Punctuations
-        text_normalized = re.sub(r'[^\w\s]', '', text_normalized)
+            # STEP 3: Assuming that they are not sufficiently relevant to the understanding process of the text
+            # to be normalized, just like with the Numbers, let's remove all the Punctuations
+            text_normalized = re.sub(r'[^\w\s]', '', text_normalized)
 
-        # STEP 4: Regulating the use of white space within the text
-        text_normalized = text_normalized.strip()
+            # STEP 4: Regulating the use of white space within the text
+            # Removing all white space characters on the both ends of the text
+            text_normalized = text_normalized.strip()
+            # Substituting all consecutive white space characters by only one
+            text_normalized = re.sub('\s+', ' ', text_normalized)
 
-        return text_normalized
+            return text_normalized
+        else:
+            # No input text was provided
+            return None
+
 
