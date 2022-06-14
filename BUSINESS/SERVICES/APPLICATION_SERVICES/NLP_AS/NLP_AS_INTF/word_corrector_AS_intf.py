@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-word_corrector_AS_intf.py: The python file dedicated to the Abstract Base Class for the spellings correction of word
+word_corrector_AS_intf.py: The python file dedicated to the Abstract Base Class of NLP Application Service for
+the spellings correction of word
 """
 
 __author__ = "Rindra Mbolamananamalala"

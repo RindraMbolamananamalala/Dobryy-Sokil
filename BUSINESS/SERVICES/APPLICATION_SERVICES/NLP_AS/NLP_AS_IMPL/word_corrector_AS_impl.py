@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-word_corrector_AS_impl.py: The python file dedicated to the Implementation Class for the spellings correction of word
+word_corrector_AS_impl.py: The python file dedicated to the Implementation Class of NLP Application Service
+for the spellings correction of word
 """
 
 __author__ = "Rindra Mbolamananamalala"
