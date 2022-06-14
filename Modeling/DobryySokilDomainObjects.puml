@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class DobryySokilDO {
+}
+
+class Image {
+    location_path: str
+    name: str
+    extension: str
+    {method}
+    get_absolute_path(): str
+}
+
+class Word {
+    content: str
+}
+
+DobryySokilDO <|-- Image
+DobryySokilDO <|-- Word
+
+Image "0" *-- "*" Word : labels_of_visual_elements_contained
+
+Word "0" *-- "*" Word : synonyms
+Word "0" *-- "*" Word : homonyms
+Word "0" *-- "*" Word : associated_words
+
+@enduml
