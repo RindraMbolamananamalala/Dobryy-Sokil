@@ -12,6 +12,7 @@ __email__ = "rindraibi@gmail.com"
 __status__ = "Prototype"
 
 from BUSINESS.MODEL.DOMAIN_OBJECTS.dobryy_sokil_DO import DobryySokilDO
+from BUSINESS.MODEL.DOMAIN_OBJECTS.word import Word
 
 
 class Image(DobryySokilDO):
@@ -33,6 +34,12 @@ class Image(DobryySokilDO):
 
     def get_extension(self) -> str:
         return self.extension
+
+    def set_labels_of_visual_elements_contained(self, labels_of_visual_elements_contained: [Word]):
+        self.labels_of_visual_elements_contained = labels_of_visual_elements_contained
+
+    def get_labels_of_visual_elements_contained(self) -> [Word]:
+        return self.labels_of_visual_elements_contained
 
     def get_absolute_path(self) -> str:
         """
