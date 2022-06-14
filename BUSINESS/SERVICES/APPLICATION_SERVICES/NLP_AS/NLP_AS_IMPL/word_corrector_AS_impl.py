@@ -12,19 +12,18 @@ __status__ = "Prototype"
 
 import re
 
-
-from textblob import Word, _text
+# For the entire set of implementations, the TextBlob Library is the chosen NLP tool here
+from textblob import Word
 
 from CONFIGURATIONS.logger import LOGGER
 from BUSINESS.SERVICES.APPLICATION_SERVICES.NLP_AS.NLP_AS_INTF.word_corrector_AS_intf import WordCorrectorASIntf
 
 
-
 def reduce_lengthening(word: str):
-    try :
+    try:
         """
         English words have a maximum of two (02) repeated characters, therefore, this function rip offs
-        repeated characters more than 2
+        repeated characters more than 2.
         :param word: The word concerned by the reduction of lengthening
         :return: The version of the word with the lengthening reduced
         """
@@ -33,7 +32,6 @@ def reduce_lengthening(word: str):
     except Exception as ex:
         print(str(ex))
         return None
-
 
 
 def correcting_spellings(word: str) -> str:
