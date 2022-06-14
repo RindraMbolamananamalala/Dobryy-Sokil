@@ -20,7 +20,7 @@ from CONFIGURATIONS.logger import LOGGER
 from BUSINESS.SERVICES.APPLICATION_SERVICES.NLP_AS.NLP_AS_INTF.word_corrector_AS_intf import WordCorrectorASIntf
 
 
-def reduce_lengthening(word: str):
+def reduce_lengthening(word: str) -> str:
     try:
         """
         English words have a maximum of two (02) repeated characters, therefore, this function rip offs
@@ -51,7 +51,7 @@ def correcting_spellings(word: str) -> str:
 
 
 class WordCorrectorASImpl(WordCorrectorASIntf):
-    def correct(self, word: str):
+    def correct(self, word: str) -> str:
         """
         Correcting the Spelling of a word inserted within the parameter.
         :param word: The word to be corrected (w.r.t its Spelling)

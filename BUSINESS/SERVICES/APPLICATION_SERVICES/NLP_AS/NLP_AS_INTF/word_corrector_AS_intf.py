@@ -16,7 +16,7 @@ from abc import ABC, abstractmethod
 
 class WordCorrectorASIntf(ABC):
     @abstractmethod
-    def correct(self, word: str):
+    def correct(self, word: str) -> str:
         """
         Correcting the Spelling of a word inserted within the parameter.
         :param word: The word to be corrected (w.r.t its Spelling)
