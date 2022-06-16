@@ -29,6 +29,10 @@ def find_word_synonyms(word: str) -> set():
         for synonyms_set in concerned_word.synsets:
             for lemma in synonyms_set.lemmas():
                 synonyms.add(lemma.name())
+        # For sure, it is likely that the word itself has been considered as its own close neighbors
+        # during the collect of all the Lemmas related to its synonyms, therefore, if it is the case,  we have to remove
+        # it from the set of neighbors to return.
+        synonyms.discard(word)
         return synonyms
     # The word is None or its length is inferior to 1
     return synonyms
