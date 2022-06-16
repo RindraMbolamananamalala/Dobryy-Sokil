@@ -2,7 +2,7 @@
 
 """
 test_find_word_close_neighbors.py: The python file dedicated to Unit Testing of the
-BUSINESS.SERVICES.APPLICATION_SERVICES..NLP_AS.NLP_AS_IMPL.word_finder_AS_impl.WordFinderASImpl.find_word_close_neighbors()"
+BUSINESS.SERVICES.APPLICATION_SERVICES.AI_AS.NLP_AS.NLP_AS_IMPL.word_finder_AS_impl.WordFinderASImpl.find_word_close_neighbors()"
 function
 """
 
@@ -14,7 +14,7 @@ __status__ = "Prototype"
 
 import unittest
 
-from BUSINESS.SERVICES.APPLICATION_SERVICES.NLP_AS.NLP_AS_IMPL.word_finder_AS_impl import WordFinderASImpl
+from BUSINESS.SERVICES.APPLICATION_SERVICES.AI_AS.NLP_AS.NLP_AS_IMPL.word_finder_AS_impl import WordFinderASImpl
 
 
 class TestFindWordCloseNeighbors(unittest.TestCase):

@@ -14,7 +14,7 @@ __status__ = "Prototype"
 # For the entire set of implementations, the TextBlob Library is the chosen NLP tool here
 from textblob import Word
 
-from BUSINESS.SERVICES.APPLICATION_SERVICES.NLP_AS.NLP_AS_INTF.word_finder_AS_intf import WordFinderASIntf
+from BUSINESS.SERVICES.APPLICATION_SERVICES.AI_AS.NLP_AS.NLP_AS_INTF.word_finder_AS_intf import WordFinderASIntf
 
 
 def find_word_synonyms(word: str) -> set():

@@ -2,7 +2,7 @@
 
 """
 test_correct.py: The python file dedicated to Unit Testing of the
-BUSINESS.SERVICES.APPLICATION_SERVICES.NLP_AS.NLP_AS_IMPL.word_corrector_AS_impl.WordCorrectorASImpl.correct()"
+BUSINESS.SERVICES.APPLICATION_SERVICES.AI_AS.NLP_AS.NLP_AS_IMPL.word_corrector_AS_impl.WordCorrectorASImpl.correct()"
 function
 """
 
@@ -15,7 +15,7 @@ __status__ = "Prototype"
 import unittest
 import warnings
 
-from BUSINESS.SERVICES.APPLICATION_SERVICES.NLP_AS.NLP_AS_IMPL.word_corrector_AS_impl import WordCorrectorASImpl
+from BUSINESS.SERVICES.APPLICATION_SERVICES.AI_AS.NLP_AS.NLP_AS_IMPL.word_corrector_AS_impl import WordCorrectorASImpl
 
 
 def ignore_resource_warnings(test_func):

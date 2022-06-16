@@ -17,7 +17,7 @@ import re
 from textblob import Word
 
 from CONFIGURATIONS.logger import LOGGER
-from BUSINESS.SERVICES.APPLICATION_SERVICES.NLP_AS.NLP_AS_INTF.word_corrector_AS_intf import WordCorrectorASIntf
+from BUSINESS.SERVICES.APPLICATION_SERVICES.AI_AS.NLP_AS.NLP_AS_INTF.word_corrector_AS_intf import WordCorrectorASIntf
 
 
 def reduce_lengthening(word: str) -> str:
