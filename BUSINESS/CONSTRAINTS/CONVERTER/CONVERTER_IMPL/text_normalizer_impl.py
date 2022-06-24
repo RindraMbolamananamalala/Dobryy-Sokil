@@ -12,39 +12,55 @@ __status__ = "Prototype"
 
 import re
 
+from CONFIGURATIONS.logger import LOGGER
+
 from BUSINESS.CONSTRAINTS.CONVERTER.CONVERTER_INTF.text_normalizer_intf import TextNormalizerIntf
 
 
 class TextNormalizerImpl(TextNormalizerIntf):
-    def normalize(self, text_to_normalize: str):
-        if text_to_normalize is not None:
-            """
-            Transforming a text into one canonical form, this latter chosen according to the specific needs
-            within the Dobryy Sokil Project.
-            :param text_to_normalize: The text to normalize
-            :return: the normalized version of the text put in parameter
-            """
+    def normalize(self, text_to_normalize: str) -> str:
+        """
+        Transforming a text into one canonical form, this latter chosen according to the specific need within the Dobryy Sokil Project.
 
-            # STEP 1 : Converting all the letters to Lower Case
-            text_normalized = text_to_normalize.lower()
+        :param text_to_normalize: The text to normalize
+        :return: The normalized version of the text put in parameter
+        """
+        if text_to_normalize is not None:  # Text made up of only one Blank Character considered as a valid one
+            try:
+                # STEP 1 : Converting all the letters to Lower Case
+                text_normalized = text_to_normalize.lower()
 
-            # STEP 2 : Assuming that they are not sufficiently relevant to the understanding process of the text
-            # to be normalized, let's remove all the Numbers
-            text_normalized = re.sub(r'\d+', '', text_normalized)
+                # STEP 2 : Assuming that they are not relevant enough for the understanding process of the text
+                # to be normalized, let's remove all the Numbers
+                text_normalized = re.sub(r'\d+', '', text_normalized)
 
-            # STEP 3: Assuming that they are not sufficiently relevant to the understanding process of the text
-            # to be normalized, just like with the Numbers, let's remove all the Punctuations
-            text_normalized = re.sub(r'[^\w\s]', '', text_normalized)
+                # STEP 3: Assuming that they are not relevant enough for the understanding process of the text
+                # to be normalized, just like with the Numbers, let's remove all the Punctuations
+                text_normalized = re.sub(r'[^\w\s]', '', text_normalized)
 
-            # STEP 4: Regulating the use of white space within the text
-            # Removing all white space characters on the both ends of the text
-            text_normalized = text_normalized.strip()
-            # Substituting all consecutive white space characters by only one
-            text_normalized = re.sub('\s+', ' ', text_normalized)
+                # STEP 4: Regulating the use of white space within the text
+                # Removing all white space characters on the both ends of the text
+                text_normalized = text_normalized.strip()
+                # Substituting all consecutive white space characters by only one
+                text_normalized = re.sub('\s+', ' ', text_normalized)
 
-            return text_normalized
+                # The text was successfully normalized
+                LOGGER.info(
+                    "\"" + text_to_normalize + "\""
+                    + " successfully normalized to : "
+                    + "\"" + text_normalized + "\""
+                )
+                return text_normalized
+            except Exception as exception:
+                # At least one error has occurred, therefore, stop the normalization process
+                LOGGER.error(
+                    exception.__class__.__name__ + ": " + str(exception)
+                    + ". Impossible normalization of the text : \""
+                    + text_to_normalize + "\"."
+                )
+                raise
         else:
             # No input text was provided
+            LOGGER.info("No text was provided.")
             return None
-
 

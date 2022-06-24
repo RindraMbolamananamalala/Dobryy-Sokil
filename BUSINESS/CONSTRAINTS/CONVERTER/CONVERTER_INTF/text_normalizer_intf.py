@@ -16,11 +16,12 @@ from abc import ABC, abstractmethod
 class TextNormalizerIntf(ABC):
 
     @abstractmethod
-    def normalize(self, text_to_normalize: str):
+    def normalize(self, text_to_normalize: str) -> str:
         """
         Transforming a text into one canonical form, this latter chosen according to the specific needs
         within the Dobryy Sokil Project.
+
         :param text_to_normalize: The text to normalize
-        :return: the normalized version of the text put in parameter
+        :return: The normalized version of the text put in parameter
         """
         return

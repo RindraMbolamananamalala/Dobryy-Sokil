@@ -19,6 +19,7 @@ class WordCorrectorASIntf(ABC):
     def correct(self, word: str) -> str:
         """
         Correcting the Spelling of a word inserted within the parameter.
+
         :param word: The word to be corrected (w.r.t its Spelling)
         :return: The corrected version (w.r.t its Spelling) of the word inserted within the parameter
         """

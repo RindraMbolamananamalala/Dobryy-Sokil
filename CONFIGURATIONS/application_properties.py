@@ -19,9 +19,9 @@ config.read('application.ini')
 profile = config['PROFILE']['value']
 
 
-def get_application_property(property_key):
+def get_application_property(property_key) -> str:
     """
-    Getting an application's property from the latter's "property_key"
+    Getting an application's property from the latter's "property_key".
 
     :param property_key: The property key of the wanted property
     :return: The value of the wanted property

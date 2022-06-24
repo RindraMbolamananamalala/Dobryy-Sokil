@@ -13,7 +13,7 @@ __status__ = "Prototype"
 
 class DobryySokilDO:
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
 
         :return:  a structure in which all DO's attributes are presented besides their respective value(s)

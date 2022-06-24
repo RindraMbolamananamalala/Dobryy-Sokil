@@ -19,6 +19,7 @@ class WordFinderASIntf(ABC):
     def find_word_close_neighbors(self, word: str) -> set():
         """
         Finding the set of words that can be considered, with "high" confidence, as neighbors of a given "correct" word.
+
         :param word: The word whose neighbors are to be found
         :return: The list of words that are the neighbors, with "high" confidence, of the word given within the parameter
         """
@@ -29,6 +30,7 @@ class WordFinderASIntf(ABC):
         """
         Finding the set of words that can be considered, with "relatively high" confidence, as neighbors of a given
         "correct" word.
+
         :param word: The word whose neighbors are to be found
         :return: The list of words that are the neighbors, with "relatively high" confidence, of the word given within
         the parameter
