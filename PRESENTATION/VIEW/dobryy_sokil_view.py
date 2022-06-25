@@ -18,6 +18,7 @@ from PRESENTATION.HMI.dobryy_sokil_HMI import Ui_MainWindow
 
 class DobryySokilViewWidgetEventId(Enum):
     """
+
     The Enum dedicated to the representation of the couple (Widget, External_Event) with a unique Id
     """
     BUTTON_LAUNCH_RESEARCH_CLICKED = 1
@@ -28,12 +29,27 @@ class DobryySokilViewWidgetEventId(Enum):
 
 class DobryySokilView:
     def set_dobryy_sokil_hmi(self, dobryy_sokil_hmi: Ui_MainWindow):
+        """
+
+        :param dobryy_sokil_hmi: The HMI to be associated to the View Part of the MVC Implementation
+        within the PRESENTATION layer of the Dobryy Sokil Project
+        :return: None
+        """
         self.dobryy_sokil_hmi = dobryy_sokil_hmi
 
-    def get_dobryy_sokil_hmi(self):
+    def get_dobryy_sokil_hmi(self) -> Ui_MainWindow:
+        """
+
+        :return: The HMI associated to the View Part of the MVC Implementation
+        within the PRESENTATION layer of the Dobryy Sokil Project
+        """
         return self.dobryy_sokil_hmi
 
     def __init__(self, window: Ui_MainWindow):
+        """
+
+        :param window: The main window of the application.
+        """
         self.set_dobryy_sokil_hmi(window)
         # rule : PRESENTATION_HMI_R001
         self.manage_event(DobryySokilViewWidgetEventId.TYPING_ON_INPUT_TEXT_TO_RESEARCH, self.PRESENTATION_HMI_R001)
@@ -74,6 +90,7 @@ class DobryySokilView:
     """
     def PRESENTATION_HMI_R001(self):
         """
+
         If the content of the Input Text for the research is empty, the Button for the launch of the Research must be
         disabled.
         """

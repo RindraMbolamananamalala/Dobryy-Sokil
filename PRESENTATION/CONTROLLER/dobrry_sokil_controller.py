@@ -16,9 +16,20 @@ from PRESENTATION.VIEW.dobryy_sokil_view import DobryySokilView, DobryySokilView
 
 class DobrrySokilController:
     def set_dobryy_sokil_view(self, dobryy_sokil_view: DobryySokilView):
+        """
+
+        :param dobryy_sokil_view: The View part to be associated to the Controller part within the MVC
+        Implementation at the level of the Presentation Layer of the Dobryy Sokil Project.
+        :return: None
+        """
         self.dobryy_sokil_view = dobryy_sokil_view
 
-    def get_dobryy_sokil_view(self):
+    def get_dobryy_sokil_view(self) -> DobryySokilView:
+        """
+
+        :return: The View part Linked to the Controller part within the MVC Implementation
+        at the level of the Presentation Layer of the Dobryy Sokil Project.
+        """
         return self.dobryy_sokil_view
 
     def __init__(self, dobryy_sokil_view: DobryySokilView):
