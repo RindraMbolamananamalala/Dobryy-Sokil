@@ -33,7 +33,7 @@ def ignore_resource_warnings(test_func):
 class TestCorrect(unittest.TestCase):
 
     """
-    Not show the resource warning messages related to the specific reading processes managed by TextBlob
+    Do not show the resource warning messages related to the specific reading processes managed by TextBlob
     """
     @ignore_resource_warnings
     def test_correct(self):
