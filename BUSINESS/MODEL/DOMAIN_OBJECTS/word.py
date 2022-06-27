@@ -86,6 +86,10 @@ class Word(DobryySokilDO):
         self.set_homonyms(None)
         self.set_associated_words(None)
 
-    def __init__(self, content):
+    def __init__(self, content: str):
+        """
+
+        :param content: The actual word contained in this dedicated object
+        """
         # The actual word contained in this dedicated object
         self.set_content(content)
