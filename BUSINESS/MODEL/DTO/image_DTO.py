@@ -17,7 +17,7 @@ from BUSINESS.MODEL.DTO.dobryy_sokil_DTO import DobryySokilDTO
 from BUSINESS.MODEL.DOMAIN_OBJECTS.word import Word
 
 
-class Image(DobryySokilDTO):
+class ImageDTO(DobryySokilDTO):
 
     def set_location_path(self, location_path: Optional[str]):
         """
