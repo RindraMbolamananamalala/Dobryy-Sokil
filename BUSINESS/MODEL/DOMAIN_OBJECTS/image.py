@@ -101,3 +101,9 @@ class Image(DobryySokilDO):
         self.location_path = location_path
         self.name = name
         self.extension = extension
+
+    def __init__(self):
+        # All the properties set to None at the start
+        self.location_path = None
+        self.name = None
+        self.extension = None

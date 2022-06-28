@@ -64,7 +64,7 @@ class ImageDTO(DobryySokilDTO):
         """
         return self.extension
 
-    def set_labels_of_visual_elements_contained(self, labels_of_visual_elements_contained: Optional[list(Word)]):
+    def set_labels_of_visual_elements_contained(self, labels_of_visual_elements_contained: Optional[list]):
         """
 
         :param labels_of_visual_elements_contained: The set of labels of the visual elements contained inside the Image
@@ -72,7 +72,7 @@ class ImageDTO(DobryySokilDTO):
         """
         self.labels_of_visual_elements_contained = labels_of_visual_elements_contained
 
-    def get_labels_of_visual_elements_contained(self) -> Optional[list(Word)]:
+    def get_labels_of_visual_elements_contained(self) -> Optional[list]:
         """
 
         :return: The set of labels of the visual elements contained inside the Image
@@ -103,3 +103,9 @@ class ImageDTO(DobryySokilDTO):
         self.location_path = location_path
         self.name = name
         self.extension = extension
+
+    def __init__(self):
+        # All the properties set to None at the start
+        self.location_path = None
+        self.name = None
+        self.extension = None
