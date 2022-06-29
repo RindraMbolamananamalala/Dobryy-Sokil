@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+'STEP 1: Determining the words for the Research
+Controller -> NLP_AS.WordFinder: Normalized User's input
+NLP_AS.WordFinder --> Controller: Words for the Research
+
+'STEP 2: First part of the feeding step of the Word Matcher with the words for the Research
+Controller -> NLP_AS.WordMatcher: Words for the Matching process
+
+
+'STEP 3: Image Finder's prediction part
+Controller -> ML_AS.ImageFinder: Images = f(selected Root Folder)
+ML_AS.ImageFinder --> Controller: ImageDTOs = g(label, file_path)
+
+
+/'STEP 4: Second part of the feeding step of the Word Matcher with the Images' labels
+previously predicted by the Image Finder'/
+Controller -> NLP_AS.WordMatcher: Images' labels
+
+
+'STEP 5: Retrieving all the Images corresponding to the words initially provided by the Controller
+NLP_AS.WordMatcher --> Controller: ImageDTOs = g(matching label, file_path)
+
+@enduml
