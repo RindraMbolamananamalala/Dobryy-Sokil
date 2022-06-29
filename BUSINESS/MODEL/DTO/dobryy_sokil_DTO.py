@@ -18,4 +18,4 @@ class DobryySokilDTO:
 
         :return:  a structure in which all DTO's attributes are presented besides their respective value(s)
         """
-        return str(vars(self))
+        return super.__str__(self) + " :" + str(vars(self))
