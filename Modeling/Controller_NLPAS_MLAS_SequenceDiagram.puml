@@ -10,13 +10,13 @@ NLP_AS.WordFinder --> Controller: Words for the Research
 Controller -> NLP_AS.WordMatcher: Words for the Matching process
 
 
-'STEP 3: Image Finder's prediction part
+'STEP 3: Image Classifier's prediction part
 Controller -> ML_AS.ImageClassifier: Images = f(selected Root Folder)
 ML_AS.ImageClassifier --> Controller: ImageDTOs = g(label, file_path)
 
 
 /'STEP 4: Second part of the feeding step of the Word Matcher with the Images' labels
-previously predicted by the Image Finder'/
+previously predicted by the Image Classifier'/
 Controller -> NLP_AS.WordMatcher: Images' labels
 
 
