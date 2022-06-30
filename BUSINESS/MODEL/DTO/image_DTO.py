@@ -13,8 +13,8 @@ __status__ = "Prototype"
 
 from typing import Optional
 
+from CONFIGURATIONS.logger import LOGGER
 from BUSINESS.MODEL.DTO.dobryy_sokil_DTO import DobryySokilDTO
-from BUSINESS.MODEL.DOMAIN_OBJECTS.word import Word
 
 
 class ImageDTO(DobryySokilDTO):
@@ -90,22 +90,26 @@ class ImageDTO(DobryySokilDTO):
                + "." \
                + self.get_extension()
 
-    def __init__(self
-                 , location_path: Optional[str]
-                 , name: Optional[str]
-                 , extension: Optional[str]):
+    def __init__(self, *args):
         """
 
         :param location_path: The path of the directory where the file containing the Image is located
         :param name: The filename of the file containing the Image
         :param extension: The extension of the file containing the Image
         """
-        self.location_path = location_path
-        self.name = name
-        self.extension = extension
-
-    def __init__(self):
-        # All the properties set to None at the start
-        self.location_path = None
-        self.name = None
-        self.extension = None
+        if len(args) == 0:
+            # No argument was given, therefore, all the properties set to None at the start
+            self.location_path = None
+            self.name = None
+            self.extension = None
+        elif len(args) == 3:
+            # The Location path, Name and the File Extension of the Image DTO were given
+            self.location_path = args[0]
+            self.name = args[1]
+            self.extension = args[2]
+        else:
+            # Invalid numbers of arguments
+            msg_error = "Invalid numbers of arguments given for the instantiation of an Image DTO"
+            LOGGER.error(msg_error)
+            exception = TypeError(msg_error)
+            raise exception
