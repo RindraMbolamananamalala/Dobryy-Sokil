@@ -164,3 +164,5 @@ class ImageClassifierASImpl(ImageClassifierASIntf):
         else:
             # An empty list of Images was provided
             LOGGER.info("No Images was provided for the Classification")
+            # so, let's return an Empty List
+            return []
