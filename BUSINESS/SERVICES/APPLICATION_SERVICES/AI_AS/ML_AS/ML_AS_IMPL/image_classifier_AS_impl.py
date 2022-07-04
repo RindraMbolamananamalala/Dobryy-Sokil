@@ -88,7 +88,7 @@ def predict_image_label(pil_image) -> [str]:
             # Converting Probabilities into Class Labels
             model_prediction = decode_predictions(y_prediction)
 
-            # Creating a Data Frame with the 5 most probable labels related to a given picture
+            # Saving the 5 most probable labels for the image
             most_probable_5_labels = model_prediction[0]
 
             for label in most_probable_5_labels:
