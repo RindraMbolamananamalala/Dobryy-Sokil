@@ -1,4 +1,15 @@
-import pandas as pd
+# -*- coding: utf-8 -*-
+
+"""
+image_classifier_AS_impl.py: The python file dedicated to the Implementation Class of the Deep Learning Application
+Service part dedicated to the prediction of the probable Labels of Images.
+"""
+
+__author__ = "Rindra Mbolamananamalala"
+__version__ = "1.0.1"
+__maintainer__ = "Rindra Mbolamananamalala"
+__email__ = "rindraibi@gmail.com"
+__status__ = "Prototype"
 
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -12,7 +23,10 @@ from BUSINESS.MODEL.DTO.classified_image_DTO import ClassifiedImageDTO
 from BUSINESS.SERVICES.APPLICATION_SERVICES.AI_AS.ML_AS.ML_AS_INTF.image_classifier_AS_intf import ImageClassifierASIntf
 
 """
-
+Still considered as one of the most excellent vision model architecture till date, the
+VGG16 convolution neural net (CNN) Architecture has been the chosen one here
+for the implementation of our Deep Learning model for the classification of 
+images.
 """
 dl_model = VGG16()
 
