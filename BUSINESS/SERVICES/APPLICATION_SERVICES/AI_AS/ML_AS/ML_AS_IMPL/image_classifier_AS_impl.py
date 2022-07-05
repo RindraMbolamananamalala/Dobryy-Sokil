@@ -154,9 +154,18 @@ class ImageClassifierASImpl(ImageClassifierASIntf):
                 )
                 return classified_images
             except Exception as exception:
-                # At least one error has occurred, therefore the reduction process couldn't happen
+                # At least one error has occurred, therefore the reduction process couldn't tae place
                 LOGGER.error(
                     exception.__class__.__name__ + ": " + str(exception)
+                    + ". Impossible Classification of the list of Images : \""
+                    + str(images) + "\"."
+                )
+                raise
+            except FileNotFoundError as file_not_found_error:
+                # At least one error related to a File Not Found has occurred, , therefore the reduction process
+                # couldn't take place
+                LOGGER.error(
+                    file_not_found_error.__class__.__name__ + ": " + str(file_not_found_error)
                     + ". Impossible Classification of the list of Images : \""
                     + str(images) + "\"."
                 )

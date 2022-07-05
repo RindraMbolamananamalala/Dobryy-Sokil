@@ -11,6 +11,7 @@ __maintainer__ = "Rindra Mbolamananamalala"
 __email__ = "rindraibi@gmail.com"
 __status__ = "Prototype"
 
+from CONFIGURATIONS.logger import LOGGER
 from BUSINESS.MODEL.DOMAIN_OBJECTS.dobryy_sokil_DO import DobryySokilDO
 from BUSINESS.MODEL.DOMAIN_OBJECTS.word import Word
 
@@ -82,28 +83,36 @@ class Image(DobryySokilDO):
 
         :return: The absolute path of the file containing the Image
         """
-        return self.get_location_path().replace("/", "\\") \
-               + "\\" \
-               + self.get_name() \
-               + "." \
-               + self.get_extension()
+        if self.get_location_path() and self.get_name() and self.get_extension():
+            # Only a valid Image can have a valid absolute path
+            return self.get_location_path().replace("/", "\\") \
+                   + "\\" \
+                   + self.get_name() \
+                   + "." \
+                   + self.get_extension()
+        # Not a valid Image
+        return None
 
-    def __init__(self
-                 , location_path: str
-                 , name: str
-                 , extension: str):
+    def __init__(self, *args):
         """
 
         :param location_path: The path of the directory where the file containing the Image is located
         :param name: The filename of the file containing the Image
         :param extension: The extension of the file containing the Image
         """
-        self.location_path = location_path
-        self.name = name
-        self.extension = extension
-
-    def __init__(self):
-        # All the properties set to None at the start
-        self.location_path = None
-        self.name = None
-        self.extension = None
+        if len(args) == 0:
+            # No argument was given, therefore, all the properties set to None at the start
+            self.location_path = None
+            self.name = None
+            self.extension = None
+        elif len(args) == 3:
+            # The Location path, Name and the File Extension of the Image DTO were given
+            self.location_path = args[0]
+            self.name = args[1]
+            self.extension = args[2]
+        else:
+            # Invalid numbers of arguments
+            msg_error = "Invalid numbers of arguments given for the instantiation of an Image DTO"
+            LOGGER.error(msg_error)
+            exception = TypeError(msg_error)
+            raise exception

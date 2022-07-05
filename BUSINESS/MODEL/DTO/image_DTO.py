@@ -84,11 +84,15 @@ class ImageDTO(DobryySokilDTO):
 
         :return: The absolute path of the file containing the Image
         """
-        return self.get_location_path().replace("/", "\\") \
-               + "\\" \
-               + self.get_name() \
-               + "." \
-               + self.get_extension()
+        if self.get_location_path() and self.get_name() and self.get_extension():
+            # Only a valid Image DTO can have a valid absolute path
+            return self.get_location_path().replace("/", "\\") \
+                   + "\\" \
+                   + self.get_name() \
+                   + "." \
+                   + self.get_extension()
+        # Not a valid Image DTO, therefore, return a blank string
+        return ""
 
     def __init__(self, *args):
         """

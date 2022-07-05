@@ -19,3 +19,13 @@ class DobryySokilDTO:
         :return:  a structure in which all DTO's attributes are presented besides their respective value(s)
         """
         return super.__str__(self) + " :" + str(vars(self))
+
+    def __eq__(self, other):
+        """
+
+        :param other: The other object to be compared to the current one
+        :return: True if the two objects are "equal", False otherwise
+        """
+        if isinstance(other, DobryySokilDTO):
+            return vars(self) == vars(other)
+        return False
