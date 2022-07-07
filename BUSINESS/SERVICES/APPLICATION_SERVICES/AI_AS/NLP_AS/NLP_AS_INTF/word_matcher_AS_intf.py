@@ -14,8 +14,6 @@ __status__ = "Prototype"
 from abc import ABC, abstractmethod
 
 
-
-
 class WordMatcherASIntf(ABC):
     @abstractmethod
     def are_two_words_related(self, word_1: str, word_2: str):
