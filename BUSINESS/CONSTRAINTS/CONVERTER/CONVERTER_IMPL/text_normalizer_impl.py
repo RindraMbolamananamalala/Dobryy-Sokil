@@ -18,6 +18,7 @@ from BUSINESS.CONSTRAINTS.CONVERTER.CONVERTER_INTF.text_normalizer_intf import T
 
 
 class TextNormalizerImpl(TextNormalizerIntf):
+
     def normalize(self, text_to_normalize: str) -> str:
         """
         Transforming a text into one canonical form, this latter chosen according to the specific need within the Dobryy Sokil Project.
@@ -64,3 +65,42 @@ class TextNormalizerImpl(TextNormalizerIntf):
             LOGGER.info("No text was provided.")
             return None
 
+    def normalize_for_nlp(self, text_to_normalize: str) -> str:
+        """
+        Firstly, transforming a text into one canonical form, this latter chosen according to the specific needs
+        within the Dobryy Sokil Project.
+        Secondly, transforming the previous normalized text to another version according to the specific needs for
+        NLP.
+
+        :param text_to_normalize: The text to normalize
+        :return: The NLP-normalized version of the text put in parameters
+        """
+        if text_to_normalize is not None:  # Text made up of only one Blank Character considered as a valid one
+            try:
+                # Normalizing according to the general canonical form
+                text_normalized = self.normalize(text_to_normalize)
+
+                """
+                Normalizing according to the NLP needs
+                """
+                # "Space" characters are replaced by "_"
+                text_nlp_normalized = text_normalized.replace(" ", "_")
+                # The text was successfully normalized
+                LOGGER.info(
+                    "\"" + text_to_normalize + "\""
+                    + " successfully normalized for NLP to : "
+                    + "\"" + text_nlp_normalized + "\""
+                )
+                return text_nlp_normalized
+            except Exception as exception:
+                # At least one error has occurred, therefore, stop the normalization process
+                LOGGER.error(
+                    exception.__class__.__name__ + ": " + str(exception)
+                    + ". Impossible NLP normalization of the text : \""
+                    + text_to_normalize + "\"."
+                )
+                raise
+        else:
+            # No input text was provided
+            LOGGER.info("No text was provided.")
+            return None

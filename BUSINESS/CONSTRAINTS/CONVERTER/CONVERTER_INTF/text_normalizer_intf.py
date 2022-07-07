@@ -22,6 +22,21 @@ class TextNormalizerIntf(ABC):
         within the Dobryy Sokil Project.
 
         :param text_to_normalize: The text to normalize
-        :return: The normalized version of the text put in parameter
+        :return: The normalized version of the text put in parameters
         """
         return
+
+    @abstractmethod
+    def normalize_for_nlp(self, text_to_normalize: str) -> str:
+        """
+        Firstly, transforming a text into one canonical form, this latter chosen according to the specific needs
+        within the Dobryy Sokil Project.
+        Secondly, transforming the previous normalized text to another version according to the specific needs for
+        NLP.
+
+        :param text_to_normalize: The text to normalize
+        :return: The NLP-normalized version of the text put in parameters
+        """
+        return
+        
+        

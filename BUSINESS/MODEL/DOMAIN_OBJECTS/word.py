@@ -34,7 +34,7 @@ class Word(DobryySokilDO):
         """
         return self.content
 
-    def set_synonyms(self, synonyms: [Word]):
+    def set_synonyms(self, synonyms: set):
         """
 
         :param synonyms: The set of synonyms of the word corresponding to this current dedicated object
@@ -42,14 +42,14 @@ class Word(DobryySokilDO):
         """
         self.synonyms = synonyms
 
-    def get_synonyms(self) -> [Word]:
+    def get_synonyms(self) -> set:
         """
 
         :return: The set of synonyms of the word corresponding to this current dedicated object
         """
         return self.synonyms
 
-    def set_homonyms(self, homonyms: [Word]):
+    def set_homonyms(self, homonyms: set):
         """
 
         :param homonyms: The set of homonyms of the word corresponding to this current dedicated object
@@ -57,14 +57,14 @@ class Word(DobryySokilDO):
         """
         self.homonyms = homonyms
 
-    def get_homonyms(self) -> [Word]:
+    def get_homonyms(self) -> set:
         """
 
         :return: The set of homonyms of the word corresponding to this current dedicated object
         """
         return self.homonyms
 
-    def set_associated_words(self, associated_words: [Word]):
+    def set_associated_words(self, associated_words: set):
         """
 
         :param associated_words:  The set of associated words of the word corresponding to this current dedicated object
@@ -72,24 +72,26 @@ class Word(DobryySokilDO):
         """
         self.associated_words = associated_words
 
-    def get_associated_words(self) -> [Word]:
+    def get_associated_words(self) -> set:
         """
 
         :return: The set of associated words of the word corresponding to this current dedicated object
         """
         return self.associated_words
 
-    def __init__(self):
-        # At the start, all the properties set to None
-        self.set_content(None)
-        self.set_synonyms(None)
-        self.set_homonyms(None)
-        self.set_associated_words(None)
-
-    def __init__(self, content: str):
+    def __init__(self, *args):
         """
 
         :param content: The actual word contained in this dedicated object
         """
-        # The actual word contained in this dedicated object
-        self.set_content(content)
+        if len(args) == 0:
+            # No argument was provided, so, at the start, just set all the properties to Empty sets
+            self.set_content(set())
+            self.set_synonyms(set())
+            self.set_homonyms(set())
+            self.set_associated_words(set())
+        if len(args) == 1:
+            # The Word's content was provided
+            self.set_content(args[0])
+
+

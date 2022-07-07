@@ -16,7 +16,7 @@ from abc import ABC, abstractmethod
 
 class WordFinderASIntf(ABC):
     @abstractmethod
-    def find_word_close_neighbors(self, word: str) -> set():
+    def find_word_close_neighbors(self, word: str) -> set:
         """
         Finding the set of words that can be considered, with "high" confidence, as neighbors of a given "correct" word.
 
@@ -26,7 +26,7 @@ class WordFinderASIntf(ABC):
         return
 
     @abstractmethod
-    def find_word_likely_neighbors(self, word: str) -> set():
+    def find_word_likely_neighbors(self, word: str) -> set:
         """
         Finding the set of words that can be considered, with "relatively high" confidence, as neighbors of a given
         "correct" word.

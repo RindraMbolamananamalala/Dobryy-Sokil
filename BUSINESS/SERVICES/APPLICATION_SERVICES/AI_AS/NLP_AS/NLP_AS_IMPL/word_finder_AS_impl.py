@@ -59,7 +59,7 @@ def find_word_s_neighbors_synonyms(word: str) -> set():
 
 class WordFinderASImpl(WordFinderASIntf):
 
-    def find_word_close_neighbors(self, word: str) -> set():
+    def find_word_close_neighbors(self, word: str) -> set:
         """
         Finding the set of words that can be considered, with "high" confidence, as neighbors of a given "correct" word.
 
@@ -75,7 +75,7 @@ class WordFinderASImpl(WordFinderASIntf):
                 LOGGER.info(
                     "Synonyms of \""
                     + word + "\""
-                    + "found : "
+                    + " found : "
                     + str(word_synonyms)
                 )
                 return word_synonyms
@@ -93,7 +93,7 @@ class WordFinderASImpl(WordFinderASIntf):
             return set()
 
 
-    def find_word_likely_neighbors(self, word: str) -> set():
+    def find_word_likely_neighbors(self, word: str) -> set:
         """
         Finding the set of words that can be considered, with "relatively high" confidence, as neighbors of a given
         "correct" word.
@@ -112,7 +112,7 @@ class WordFinderASImpl(WordFinderASIntf):
                 LOGGER.info(
                     "Likely neighbors of \""
                     + word + "\""
-                    + "found : "
+                    + " found : "
                     + str(neighbors_found)
                 )
                 return neighbors_found
