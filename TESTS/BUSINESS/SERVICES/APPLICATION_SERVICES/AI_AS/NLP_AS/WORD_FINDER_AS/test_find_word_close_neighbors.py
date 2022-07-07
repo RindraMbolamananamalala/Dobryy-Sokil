@@ -21,8 +21,8 @@ class TestFindWordCloseNeighbors(unittest.TestCase):
     def test_find_word_close_neighbors(self):
         """
         GIVEN a correct word provided within the parameter
-        WHEN the find_word_close_neighbors() method of the WordFinderASImpl is called, with the previous within
-        its parameter,
+        WHEN the find_word_close_neighbors() method of the WordFinderASImpl is called, with the previous word within
+        its parameters,
         THEN a set of the words considered as being its close neighbors must be returned
         """
 
