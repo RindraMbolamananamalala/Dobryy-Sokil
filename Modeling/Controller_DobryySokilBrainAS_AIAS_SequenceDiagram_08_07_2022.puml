@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+' Feeding the BUSINESS Part with Data from the PRESENTATION.Controller
+Controller -> DobryySokilBrain_AS: User's input & ROOT Folder for the research
+
+' First part of the data feeding (User's Input) of The Matching process
+DobryySokilBrain_AS -> NLP_AS.WordMatcher_AS: User's input for the Matching process
+
+' DL Part for the classifications of Images
+DobryySokilBrain_AS -> ML_AS.ImageClassifier_AS: ROOT Folder for the Images Research
+ML_AS.ImageClassifier_AS --> DobryySokilBrain_AS: Classified Images' Labels
+
+' Second part of the data feeding (Predicted Labels of Images) of The Matching process
+DobryySokilBrain_AS -> NLP_AS.WordMatcher_AS: Classified Images' Labels for the Matching process
+
+' Actual Matching process
+NLP_AS.WordMatcher_AS --> DobryySokilBrain_AS: Matching Images'Labels
+
+' Outcomes of the BUSINESS Part sent to the PRESENTATION.Controller
+DobryySokilBrain_AS --> Controller: Image (found) DTOs
+
+@enduml
