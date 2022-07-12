@@ -1,3 +1,17 @@
+# -*- coding: utf-8 -*-
+
+"""
+dobryy_sokil_AS_impl.py: The python file dedicated to the Implementation Class of the Dobryy Sokil Application
+Service part dedicated to any implementation of action obtained with the Modeling process of a Real World "smart"
+Sokil (The Ukrainian world for Falcon)
+"""
+
+__author__ = "Rindra Mbolamananamalala"
+__version__ = "1.0.1"
+__maintainer__ = "Rindra Mbolamananamalala"
+__email__ = "rindraibi@gmail.com"
+__status__ = "Prototype"
+
 from UTILS.image_utils import get_all_images_within_a_folder
 
 from CONFIGURATIONS.logger import LOGGER
