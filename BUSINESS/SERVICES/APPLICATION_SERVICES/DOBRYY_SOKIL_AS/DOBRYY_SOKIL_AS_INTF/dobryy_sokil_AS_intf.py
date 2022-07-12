@@ -18,7 +18,7 @@ from abc import ABC, abstractmethod
 class DobryySokilASIntf(ABC):
 
     @abstractmethod
-    def hunt(self, object_to_search: str, root_folder_path: str):
+    def hunt(self, object_to_search: str, root_folder_path: str) -> list:
         """
         The Dobryy Sokil's M1 Level model representation of an actual hunt of a target prey in a given perimeter
         in the Real World (M0) Level.

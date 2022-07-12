@@ -16,6 +16,7 @@ from mapper.object_mapper import ObjectMapper
 
 from BUSINESS.MODEL.DOMAIN_OBJECTS.image import Image
 from BUSINESS.MODEL.DTO.image_DTO import ImageDTO
+from BUSINESS.MODEL.DTO.classified_image_DTO import ClassifiedImageDTO
 
 # The Mapper Object to use throughout the whole implementation
 mapper = ObjectMapper()
@@ -45,4 +46,13 @@ def image_dto_to_image(image_dto: ImageDTO) -> Image:
     return image_to_return
 
 
+def classified_image_dto_to_image_dto(classified_image_dto: ClassifiedImageDTO) -> ImageDTO:
+    """
 
+    :param classified_image_dto: The Classified Image DTO from which all the values of the concerned properties of the
+    classic Image DTO will be retrieved
+    :return: An Image DTO build from the properties of the given Classified Image DTO
+    """
+    mapper.create_map(ClassifiedImageDTO, ImageDTO)
+    image_dto_to_return = mapper.map(classified_image_dto, ImageDTO)
+    return image_dto_to_return

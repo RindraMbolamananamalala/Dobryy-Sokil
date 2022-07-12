@@ -12,6 +12,8 @@ __maintainer__ = "Rindra Mbolamananamalala"
 __email__ = "rindraibi@gmail.com"
 __status__ = "Prototype"
 
+from MAPPER.dobryy_sokil_mapper import classified_image_dto_to_image_dto
+
 from UTILS.image_utils import get_all_images_within_a_folder
 
 from CONFIGURATIONS.logger import LOGGER
@@ -37,7 +39,7 @@ class DobryySokilASImpl(DobryySokilASIntf):
         """
         self.word_matcher_as = word_matcher_as
 
-    def get_word_matcher_as(self):
+    def get_word_matcher_as(self) -> WordMatcherASIntf:
         """
 
         :return:  The NLP.Word_Matcher Application Service used throughout the entire current
@@ -46,12 +48,22 @@ class DobryySokilASImpl(DobryySokilASIntf):
         return self.word_matcher_as
 
     def set_image_classifier_as(self, image_classifier_as: ImageClassifierASIntf):
+        """
+
+        :param image_classifier_as: The ML.Image_classifier_AS to be used throughout the entire current Application
+        Service.
+        :return: None
+        """
         self.image_classifier_as = image_classifier_as
 
-    def get_image_classifier_as(self):
+    def get_image_classifier_as(self) -> ImageClassifierASIntf:
+        """
+
+        :return: The ML.Image_classifier_AS used throughout the entire current Application Service.
+        """
         return self.image_classifier_as
 
-    def hunt(self, object_to_search: str, root_folder_path: str):
+    def hunt(self, object_to_search: str, root_folder_path: str) -> list:
         """
         The Dobryy Sokil's M1 Level model representation of an actual hunt of a target prey in a given perimeter
         in the Real World (M0) Level.
@@ -83,7 +95,12 @@ class DobryySokilASImpl(DobryySokilASIntf):
                         # The relation between the Object to search and the current Image is determined by a NLP
                         # Matching process
                         if self.get_word_matcher_as().are_two_words_related(object_to_search, image_possible_label):
-                            list_of_images_found.append(root_folder_classified_image)
+                            # the Label of the current image matches that of the Object to search,
+                            # this Image is therefore retained
+                            list_of_images_found.append(
+                                # the result to return has to be under a "classic" Image DTO version
+                                classified_image_dto_to_image_dto(root_folder_classified_image)
+                            )
                             break
                 if len(list_of_images_found) > 0:
                     # A successful Hunt
@@ -115,3 +132,4 @@ class DobryySokilASImpl(DobryySokilASIntf):
         # Preparation of all the other Application Services to be used by the current Application Service
         self.set_word_matcher_as(WordMatcherASImpl())
         self.set_image_classifier_as(ImageClassifierASImpl())
+
