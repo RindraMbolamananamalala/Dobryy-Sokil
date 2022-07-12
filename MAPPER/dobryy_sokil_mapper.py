@@ -21,6 +21,15 @@ from BUSINESS.MODEL.DTO.classified_image_DTO import ClassifiedImageDTO
 # The Mapper Object to use throughout the whole implementation
 mapper = ObjectMapper()
 
+"""
+Creating Mappings for:
+"""
+# Image to ImageDTO
+mapper.create_map(Image, ImageDTO)
+# Image DTO to Image
+mapper.create_map(ImageDTO, Image)
+# Classified Image DTO to Image DTO
+mapper.create_map(ClassifiedImageDTO, ImageDTO)
 
 def image_to_image_dto(image: Image) -> ImageDTO:
     """
@@ -29,7 +38,6 @@ def image_to_image_dto(image: Image) -> ImageDTO:
     of the Image DTO will be retrieved
     :return: An Image DTO build from the properties of the given Image Object
     """
-    mapper.create_map(Image, ImageDTO)
     image_dto_to_return = mapper.map(image, ImageDTO)
     return image_dto_to_return
 
@@ -41,7 +49,6 @@ def image_dto_to_image(image_dto: ImageDTO) -> Image:
     will be retrieved
     :return: An Image Object build from the properties of the given Image DTO
     """
-    mapper.create_map(ImageDTO, Image)
     image_to_return = mapper.map(image_dto, Image)
     return image_to_return
 
@@ -53,6 +60,5 @@ def classified_image_dto_to_image_dto(classified_image_dto: ClassifiedImageDTO) 
     classic Image DTO will be retrieved
     :return: An Image DTO build from the properties of the given Classified Image DTO
     """
-    mapper.create_map(ClassifiedImageDTO, ImageDTO)
     image_dto_to_return = mapper.map(classified_image_dto, ImageDTO)
     return image_dto_to_return
