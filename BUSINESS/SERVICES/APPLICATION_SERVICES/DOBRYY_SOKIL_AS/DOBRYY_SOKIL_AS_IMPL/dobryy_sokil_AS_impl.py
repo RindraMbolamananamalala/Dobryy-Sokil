@@ -84,7 +84,7 @@ class DobryySokilASImpl(DobryySokilASIntf):
                     "No element related to the Object to search \"" + object_to_search
                     + "\"" + "was found within the Root Folder \"" + root_folder_path + "\""
                 )
-                return None
+                return []
             else:
                 # At least one of the required Arguments was Empty or None
                 LOGGER.error("At least one of the required Arguments was Empty of None")
