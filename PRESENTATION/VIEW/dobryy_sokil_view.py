@@ -100,12 +100,19 @@ class DobryySokilView:
         else:
             self.get_dobryy_sokil_hmi().get_button_launch_research().setDisabled(False)
 
-    def get_root_folder_path(self):
+    def get_root_folder_path(self) -> str:
         """
 
         :return: The path of the Root Folder contained in the Root Folder Browser
         """
         return self.get_dobryy_sokil_hmi().get_root_folder_browser().toPlainText()
+
+    def get_user_input(self) -> str:
+        """
+
+        :return: The text inserted by the User inside the Text area dedicated to the label of the Object of Search
+        """
+        return self.get_dobryy_sokil_hmi().get_input_text_to_research().toPlainText()
 
     def show_image(self, picture_path: str):
         """

@@ -11,7 +11,16 @@ __maintainer__ = "Rindra Mbolamananamalala"
 __email__ = "rindraibi@gmail.com"
 __status__ = "Prototype"
 
+from CONFIGURATIONS.logger import LOGGER
+
+from MAPPER.dobryy_sokil_mapper import image_dto_to_image
+
 from PRESENTATION.VIEW.dobryy_sokil_view import DobryySokilView, DobryySokilViewWidgetEventId
+
+from BUSINESS.SERVICES.APPLICATION_SERVICES.DOBRYY_SOKIL_AS.DOBRYY_SOKIL_AS_INTF.dobryy_sokil_AS_intf import \
+    DobryySokilASIntf
+from BUSINESS.SERVICES.APPLICATION_SERVICES.DOBRYY_SOKIL_AS.DOBRYY_SOKIL_AS_IMPL.dobryy_sokil_AS_impl import \
+    DobryySokilASImpl
 
 
 class DobrrySokilController:
@@ -32,6 +41,21 @@ class DobrrySokilController:
         """
         return self.dobryy_sokil_view
 
+    def set_dobryy_sokil_as(self, dobryy_sokil_as: DobryySokilASIntf):
+        """
+
+        :param dobryy_sokil_as: The Dobryy Sokil Application Service to be used throughout the entire Controller
+        :return: None
+        """
+        self.dobryy_sokil_as = dobryy_sokil_as
+
+    def get_dobryy_sokil_as(self) -> DobryySokilASIntf:
+        """
+
+        :return: The Dobryy Sokil Application Service used throughout the entire Controller
+        """
+        return self.dobryy_sokil_as
+
     def __init__(self, dobryy_sokil_view: DobryySokilView):
         """
 
@@ -44,21 +68,67 @@ class DobrrySokilController:
             , self.event_button_launch_research_clicked
         )
 
+        # Preparing the Dobryy Sokil AS to be used throughout the entire Controller
+        self.set_dobryy_sokil_as(DobryySokilASImpl())
+
     def event_button_launch_research_clicked(self):
-        """Will be "seriously" finalized according to the actual needs later """
-        # root_folder_path = self.get_dobryy_sokil_view().get_root_folder_path()
-        # images_absolutes_path_found = get_all_images_within_a_folder(root_folder_path)
-        # images_found = image_file_paths_to_image_domain_objects(images_absolutes_path_found)
-        # list_structured_image_information = []
-        # for image in images_found:
-        #     structured_image_information = {
-        #         "name": image.get_name(),
-        #         "extension": image.get_extension(),
-        #         "absolute_path": image.get_absolute_path()
-        #     }
-        #     list_structured_image_information.append(structured_image_information)
-        # self.get_dobryy_sokil_view().load_images_information_results(list_structured_image_information)
-        """but for the now, just..."""
-        pass
+        """
+        Launching the entire process of Images searching, based on the given label of the Object of search,
+        within the selected Root Folder, and then transmitting all the results to the dedicated VIEW part.
 
+        :return: None
+        """
 
+        try:
+            # First, the Dobryy Sokil listens to the User's orders related to the Image search : the Object of Search
+            # and the Root Folder for the search
+            object_to_search_label = self.get_dobryy_sokil_view().get_user_input()
+            if not object_to_search_label:
+                # An invalid Label of Object to search was provided
+                LOGGER.error("An invalid Label of Object to search was provided")
+                raise TypeError
+            LOGGER.info("The label of the object of search: \"" + object_to_search_label + "\"")
+            root_folder_path = self.get_dobryy_sokil_view().get_root_folder_path()
+            if not root_folder_path:
+                # An invalid Root Folder for the search was provided
+                LOGGER.error("An invalid Root Folder for the search was provided")
+                raise TypeError
+            LOGGER.info("The Root Folder for the search: \"" + root_folder_path + "\"")
+
+            # Launching the actual "Search" process
+            images_found_dto = self.get_dobryy_sokil_as().hunt(object_to_search_label, root_folder_path)
+            if images_found_dto:
+                # A successful search
+                LOGGER.info(
+                    "Raw Images returned from the search process related to \"" + object_to_search_label + "\""
+                    + " within \"" + root_folder_path + "\""
+                    + ": " + str(images_found_dto)
+                )
+
+                # Preparing the results obtained before sending them to the VIEW part
+                list_structured_image_information = []
+                for image_dto in images_found_dto:
+                    image = image_dto_to_image(image_dto)
+                    structured_image_information = {
+                        "name": image.get_name(),
+                        "extension": image.get_extension(),
+                        "absolute_path": image.get_absolute_path()
+                    }
+                    list_structured_image_information.append(structured_image_information)
+
+                # Sending the results obtained and already pre-treated during the previous step to the VIEW part
+                self.get_dobryy_sokil_view().load_images_information_results(list_structured_image_information)
+            else:
+                # An unsuccessful search, sending an empty list of results to the VIEW part
+                LOGGER.info(
+                    "No Image related to \"" + object_to_search_label
+                    + "\" was found within \"" + root_folder_path + "\""
+                )
+                self.get_dobryy_sokil_view().load_images_information_results([])
+        except Exception as exception:
+            # At least one Error was encountered during the entire process, therefore, we have to stop the latter
+            LOGGER.error(
+                exception.__class__.__name__ + ": " + str(exception)
+                + ". Can't go further with the Search process of Images. "
+            )
+            raise
