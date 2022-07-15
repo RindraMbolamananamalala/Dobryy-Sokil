@@ -13,6 +13,8 @@ __status__ = "Prototype"
 
 from enum import Enum
 
+from CONFIGURATIONS.logger import LOGGER
+
 from PRESENTATION.HMI.dobryy_sokil_HMI import Ui_MainWindow
 
 
@@ -45,20 +47,35 @@ class DobryySokilView:
         """
         return self.dobryy_sokil_hmi
 
-    def __init__(self, window: Ui_MainWindow):
+    def __init__(self, *args):
         """
 
         :param window: The main window of the application.
         """
-        self.set_dobryy_sokil_hmi(window)
-        # rule : PRESENTATION_HMI_R001
-        self.manage_event(DobryySokilViewWidgetEventId.TYPING_ON_INPUT_TEXT_TO_RESEARCH, self.PRESENTATION_HMI_R001)
-        # also, at the start, disabling the Button that launches the Research
-        self.PRESENTATION_HMI_R001()
-        # linking the external event of selecting an item within the results' list view
-        # with the internal action of showing the corresponding image on the dedicated area
-        self.manage_event(DobryySokilViewWidgetEventId.ITEM_WITHIN_LIST_RESEARCH_RESULTS_SELECTED
-                          , self.load_image_on_the_image_area)
+        if len(args) == 0:
+            # No specific definition of a specific HMI was provided and has to be be proved later by the Developer
+            pass
+        elif len(args) == 1:
+            # A specific definition of a specific HMI was provided with the latter's Main window having been provided
+            self.set_dobryy_sokil_hmi(
+                # The main window of the application.
+                args[0]
+            )
+            # rule : PRESENTATION_HMI_R001
+            self.manage_event(DobryySokilViewWidgetEventId.TYPING_ON_INPUT_TEXT_TO_RESEARCH, self.PRESENTATION_HMI_R001)
+            # also, at the start, disabling the Button that launches the Research
+            self.PRESENTATION_HMI_R001()
+            # linking the external event of selecting an item within the results' list view
+            # with the internal action of showing the corresponding image on the dedicated area
+            self.manage_event(DobryySokilViewWidgetEventId.ITEM_WITHIN_LIST_RESEARCH_RESULTS_SELECTED
+                              , self.load_image_on_the_image_area)
+        else:
+            # An invalid number of arguments was provided
+            msg_error = "Invalid number of arguments given for the instantiation of a Dobryy Sokil View"
+            LOGGER.error(msg_error)
+            exception = TypeError(msg_error)
+            raise exception
+
 
     def manage_event(self, widget_event_id, action):
         """

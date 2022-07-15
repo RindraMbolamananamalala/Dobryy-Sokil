@@ -56,20 +56,45 @@ class DobrrySokilController:
         """
         return self.dobryy_sokil_as
 
-    def __init__(self, dobryy_sokil_view: DobryySokilView):
+    def __init__(self, *args):
         """
 
-        :param dobryy_sokil_view: The Dobryy Sokil' View Part to be associated with the current Dobryy Sokil's Controller
+        :param dobryy_sokil_view: The Dobryy Sokil' View Part to be associated with the current Dobryy Sokil's
+        Controller
+        :param dobryy_sokil_as: The Dobryy Sokil' Application Service to be associated with the current Dobryy Sokil's
+        Controller
         """
-        # Preparing the View Part
-        self.set_dobryy_sokil_view(dobryy_sokil_view)
-        self.get_dobryy_sokil_view().manage_event(
-            DobryySokilViewWidgetEventId.BUTTON_LAUNCH_RESEARCH_CLICKED
-            , self.event_button_launch_research_clicked
-        )
+        if len(args) == 0:
+            # No specific part to be used by the Controller was provided and have to be "manually" provided be the
+            # Developer
+            pass
+        elif len(args) == 1:
+            # The Dobryy Sokil View part was provided
 
-        # Preparing the Dobryy Sokil AS to be used throughout the entire Controller
-        self.set_dobryy_sokil_as(DobryySokilASImpl())
+            # Preparing the View Part
+            self.set_dobryy_sokil_view(args[0])
+            self.get_dobryy_sokil_view().manage_event(
+                DobryySokilViewWidgetEventId.BUTTON_LAUNCH_RESEARCH_CLICKED
+                , self.event_button_launch_research_clicked
+            )
+
+            # Preparing the Dobryy Sokil AS to be used throughout the entire Controller
+            self.set_dobryy_sokil_as(DobryySokilASImpl())
+        elif len(args) == 2:
+            # Both the Dobryy Sokil View part and the Dobryy Sokil AS to be used by the Controller were provided
+            # Preparing each part
+            self.set_dobryy_sokil_view(args[0])
+            self.get_dobryy_sokil_view().manage_event(
+                DobryySokilViewWidgetEventId.BUTTON_LAUNCH_RESEARCH_CLICKED
+                , self.event_button_launch_research_clicked
+            )
+            self.set_dobryy_sokil_view(args[1])
+        else:
+            # An invalid number of arguments was provided
+            msg_error = "Invalid number of arguments given for the instantiation of a Dobryy Sokil Controller"
+            LOGGER.error(msg_error)
+            exception = TypeError(msg_error)
+            raise exception
 
     def event_button_launch_research_clicked(self):
         """
