@@ -15,7 +15,8 @@ import unittest
 
 from PRESENTATION.CONTROLLER.dobrry_sokil_controller import DobrrySokilController
 
-from TESTS.PRESENTATION.CONTROLLER.DOBRYY_SOKIL_CONTROLLER.conftest import dobryy_sokil_view_mock, dobryy_sokil_as_mock
+from TESTS.UNIT_TESTS.PRESENTATION.CONTROLLER.DOBRYY_SOKIL_CONTROLLER.conftest import dobryy_sokil_view_mock \
+    , dobryy_sokil_as_mock
 
 
 class TestEventButtonLaunchResearchClicked(unittest.TestCase):

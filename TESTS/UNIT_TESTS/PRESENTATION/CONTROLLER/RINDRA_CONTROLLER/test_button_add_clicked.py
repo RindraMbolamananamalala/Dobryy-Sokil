@@ -4,7 +4,7 @@ import pytest
 
 from PRESENTATION.CONTROLLER.rindra_controller import RindraController
 
-from TESTS.PRESENTATION.CONTROLLER.RINDRA_CONTROLLER.conftest import rindra_view_mock, rindra_sa_mock
+from TESTS.UNIT_TESTS.PRESENTATION.CONTROLLER.RINDRA_CONTROLLER.conftest import rindra_view_mock, rindra_sa_mock
 
 
 @pytest.mark.usefixtures("rindra_view_mock")

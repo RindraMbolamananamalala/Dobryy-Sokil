@@ -46,7 +46,9 @@ class TestPredict(unittest.TestCase):
         """
         # Getting the path leading to the Image Resources especially dedicated to the tests related to the Image
         # Classifier AS
-        test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] + "Добрый_Сокол" + "\\TESTS\\RESOURCES"
+        test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] \
+                                     + "Добрый_Сокол" \
+                                     + "\\TESTS\\UNIT_TESTS\\RESOURCES"
         test_image_resources = test_resources_folder_path + "\\Image"
 
         # Preparing the data for the Real Time use simulation

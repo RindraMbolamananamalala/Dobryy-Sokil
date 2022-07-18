@@ -34,10 +34,10 @@ def ignore_resource_warnings(test_func):
 
 
 class TestHunt(unittest.TestCase):
-
     """
     Do not show the resource warning messages related to the specific reading processes managed by TextBlob
     """
+
     @ignore_resource_warnings
     def test_hunt(self):
         """
@@ -71,7 +71,9 @@ class TestHunt(unittest.TestCase):
         """
         # First, let's get the path leading to the Image Resources especially dedicated to any need of Image
         # classification during tests
-        test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] + "Добрый_Сокол" + "\\TESTS\\RESOURCES"
+        test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] \
+                                     + "Добрый_Сокол" \
+                                     + "\\TESTS\\UNIT_TESTS\\RESOURCES"
         test_image_resources = test_resources_folder_path + "\\Image"
 
         # The Folder of Image Resources contains one image containing a "Timber Wolf" named "Wolf.jpg"
