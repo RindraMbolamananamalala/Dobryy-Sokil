@@ -1,4 +1,16 @@
 [
+  "TESTS/INTEGRATION_TESTS/PRESENTATION/CONTROLLER/DOBRYY_SOKIL_CONTROLLER/test_event_button_launch_research_clicked.py::TestEventButtonLaunchResearchClicked::test_event_button_launch_research_clicked",
+  "TESTS/UNIT_TESTS/BUSINESS/CONSTRAINTS/CONVERTER/TEXT_NORMALIZER/test_normalize.py::TestNormalize::test_normalize",
+  "TESTS/UNIT_TESTS/BUSINESS/CONSTRAINTS/CONVERTER/TEXT_NORMALIZER/test_normalize_for_nlp.py::TestNormalizeForNLP::test_normalize_for_nlp",
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/AI_AS/ML_AS/IMAGE_CLASSIFIER_AS/test_predict.py::TestPredict::test_predict",
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/AI_AS/NLP_AS/WORD_CORRECTOR_AS/test_correct.py::TestCorrect::test_correct",
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/AI_AS/NLP_AS/WORD_FINDER_AS/test_find_word_close_neighbors.py::TestFindWordCloseNeighbors::test_find_word_close_neighbors",
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/AI_AS/NLP_AS/WORD_FINDER_AS/test_find_word_likely_neighbors.py::TestFindWordLikelyNeighbors::test_find_word_likely_neighbors",
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/AI_AS/NLP_AS/WORD_MATCHER_AS/test_are_two_words_related.py::TestAreTwoWordsRelated::test_are_two_words_related",
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/DOBRYY_SOKIL_AS/DOBRYY_SOKIL_AS/test_hunt.py::TestHunt::test_hunt",
   "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/RINDRA_SA/test_addNewRindra.py::TestAddNewRindra::test_add_new_rindra",
-  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/RINDRA_SA/test_getAllRindras.py::TestGetAllRindras::test_get_all_rindras"
+  "TESTS/UNIT_TESTS/BUSINESS/SERVICES/APPLICATION_SERVICES/RINDRA_SA/test_getAllRindras.py::TestGetAllRindras::test_get_all_rindras",
+  "TESTS/UNIT_TESTS/PRESENTATION/CONTROLLER/DOBRYY_SOKIL_CONTROLLER/test_event_button_launch_research_clicked.py::TestEventButtonLaunchResearchClicked::test_event_button_launch_research_clicked",
+  "TESTS/UNIT_TESTS/PRESENTATION/CONTROLLER/RINDRA_CONTROLLER/test_button_add_clicked.py::TestButtonAddClicked::test_button_add_clicked",
+  "TESTS/UNIT_TESTS/PRESENTATION/CONTROLLER/RINDRA_CONTROLLER/test_button_list_clicked.py::TestButtonAddClicked::test_button_list_clicked"
 ]
