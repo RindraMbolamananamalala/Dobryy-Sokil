@@ -24,8 +24,8 @@ def get_all_images_within_a_folder(folder_path: str) -> [str]:
         # A valid Folder path was provided
         possible_image_extensions = ["apng", "avif", "gif", "jpg", "jpeg", "jfif", "pjpeg", "pjp", "png", "svg", "webp"]
         images_to_return = []
-        LOGGER.info("ELEMENYTs ==== " + len(os.walk(folder_path)))
-        for folder_element in os.walk(folder_path):
+        normalized_folder_path = folder_path.replace("/", "\\")
+        for folder_element in os.walk(normalized_folder_path):
             location_path = folder_element[0].replace("\\", "/")
             for file_element in folder_element[2]:
                 if len(file_element.split(".")) > 1:
