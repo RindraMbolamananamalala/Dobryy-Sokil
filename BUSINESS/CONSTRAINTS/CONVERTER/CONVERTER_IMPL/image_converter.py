@@ -69,6 +69,6 @@ def image_file_paths_to_image_domain_objects(image_file_paths: [str]) -> [Image]
             raise
     else:
         # A None or Void list of file paths was provided, therefore, a void list is returned
-        LOGGER.info("A None or Void file path was provided.")
+        LOGGER.info("A None or Void file paths list was provided.")
         return []
 

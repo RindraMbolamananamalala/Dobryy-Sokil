@@ -49,7 +49,8 @@ class TestPredict(unittest.TestCase):
         test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] \
                                      + "Добрый_Сокол" \
                                      + "/TESTS/UNIT_TESTS/RESOURCES"
-        test_image_resources = test_resources_folder_path + "/Image"
+        test_image_resources = test_resources_folder_path.replace("\\", "/") \
+                               + "/Image"
 
         # Preparing the data for the Real Time use simulation
         real_time_use_test_data = [

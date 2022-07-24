@@ -54,7 +54,8 @@ def dobryy_sokil_view_mocks() -> list:
     test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] \
                                  + "Добрый_Сокол" \
                                  + "/TESTS/INTEGRATION_TESTS/RESOURCES"
-    test_image_resources = test_resources_folder_path + "/Image"
+    test_image_resources = test_resources_folder_path.replace("\\", "/") \
+                           + "/Image"
 
     """
     Verifying that a Non-valid information provided by the User will Result to

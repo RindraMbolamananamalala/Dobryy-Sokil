@@ -56,13 +56,13 @@ class TestHunt(unittest.TestCase):
         """
         # If at least one of the arguments provided is None or Empty, a TypeError Exception must be raised
         self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, None, None)
-        self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, None, "C:\"")
+        self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, None, "C:/")
         self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, "Object", None)
         self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, "", "")
-        self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, "", "C:\"")
+        self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, "", "C:/")
         self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, "Object", "")
         self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, None, None)
-        self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, None, "C:\"")
+        self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, None, "C:/")
         self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, "", None)
         self.assertRaises(TypeError, dobryy_sokil_as_for_the_test, None, "")
 
@@ -74,7 +74,8 @@ class TestHunt(unittest.TestCase):
         test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] \
                                      + "Добрый_Сокол" \
                                      + "/TESTS/UNIT_TESTS/RESOURCES"
-        test_image_resources = test_resources_folder_path + "/Image"
+        test_image_resources = test_resources_folder_path.replace("\\", "/") \
+                               + "/Image"
 
         # The Folder of Image Resources contains one image containing a "Timber Wolf" named "Wolf.jpg"
         assert len(dobryy_sokil_as_for_the_test.hunt("Timber Wolf", test_image_resources)) == 1
@@ -82,7 +83,7 @@ class TestHunt(unittest.TestCase):
         assert dobryy_sokil_as_for_the_test.hunt("Timber Wolf", test_image_resources)[0].get_name() == "Wolf"
         assert dobryy_sokil_as_for_the_test.hunt("Timber Wolf", test_image_resources)[0].get_extension() == "JPG"
         assert dobryy_sokil_as_for_the_test.hunt("Timber Wolf", test_image_resources)[0].get_absolute_path() \
-               == test_image_resources + "\\Wolf.JPG"
+               == test_image_resources + "/Wolf.JPG"
 
         # The Folder of "Not_a_Disk/Not_a_Folder/Not_an_Image/" (fictional) doesn't contain any image containing a
         # "Timber Wolf"
@@ -93,7 +94,7 @@ class TestHunt(unittest.TestCase):
         assert dobryy_sokil_as_for_the_test.hunt("Orange", test_image_resources)[0].get_name() == "FruitsBowl"
         assert dobryy_sokil_as_for_the_test.hunt("Orange", test_image_resources)[0].get_extension() == "jpg"
         assert dobryy_sokil_as_for_the_test.hunt("Orange", test_image_resources)[0].get_absolute_path() \
-               == test_image_resources + "\\FruitsBowl.jpg"
+               == test_image_resources + "/FruitsBowl.jpg"
 
         # The Folder of Image Resources contains two images containing a "Soccer ball" named respectively
         # "Ball.jpg" and "Football.jpg"

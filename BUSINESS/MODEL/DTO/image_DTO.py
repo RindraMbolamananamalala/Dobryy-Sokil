@@ -86,8 +86,8 @@ class ImageDTO(DobryySokilDTO):
         """
         if self.get_location_path() and self.get_name() and self.get_extension():
             # Only a valid Image DTO can have a valid absolute path
-            return self.get_location_path().replace("/", "\\") \
-                   + "\\" \
+            return self.get_location_path().replace("\\", "/") \
+                   + "/" \
                    + self.get_name() \
                    + "." \
                    + self.get_extension()
