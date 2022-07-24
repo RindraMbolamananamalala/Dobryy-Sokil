@@ -53,8 +53,8 @@ def dobryy_sokil_view_mocks() -> list:
     # classification during Integration Testings
     test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] \
                                  + "Добрый_Сокол" \
-                                 + "\\TESTS\\INTEGRATION_TESTS\\RESOURCES"
-    test_image_resources = test_resources_folder_path + "\\Image"
+                                 + "/TESTS/INTEGRATION_TESTS/RESOURCES"
+    test_image_resources = test_resources_folder_path + "/Image"
 
     """
     Verifying that a Non-valid information provided by the User will Result to
@@ -82,7 +82,7 @@ def dobryy_sokil_view_mocks() -> list:
     timber_wolf_structured_image_information = {
         "name": "Wolf",
         "extension": "JPG",
-        "absolute_path": test_image_resources + "\\" + "Wolf.JPG"
+        "absolute_path": test_image_resources + "/" + "Wolf.JPG"
     }
     timber_wolf_structured_images_information = [timber_wolf_structured_image_information]
     view_mock_10 = dobryy_sokil_view_mock("Timber_Wolf"
@@ -101,12 +101,12 @@ def dobryy_sokil_view_mocks() -> list:
     soccer_ball_structured_image_information_1 = {
         "name": "Ball",
         "extension": "JPG",
-        "absolute_path": test_image_resources + "\\" + "Ball.JPG"
+        "absolute_path": test_image_resources + "/" + "Ball.JPG"
     }
     soccer_ball_structured_image_information_2 = {
         "name": "Football",
         "extension": "JPG",
-        "absolute_path": test_image_resources + "\\" + "Football.JPG"
+        "absolute_path": test_image_resources + "/" + "Football.JPG"
     }
     soccer_ball_structured_images_information = [soccer_ball_structured_image_information_1
         , soccer_ball_structured_image_information_2]
@@ -120,7 +120,7 @@ def dobryy_sokil_view_mocks() -> list:
     fruits_bowl_structured_image_information = {
         "name": "FruitsBowl",
         "extension": "jpg",
-        "absolute_path": test_image_resources + "\\" + "FruitsBowl.jpg"
+        "absolute_path": test_image_resources + "/" + "FruitsBowl.jpg"
     }
     fruits_bowl_structured_images_information = [fruits_bowl_structured_image_information]
     view_mock_14 = dobryy_sokil_view_mock("Banana"

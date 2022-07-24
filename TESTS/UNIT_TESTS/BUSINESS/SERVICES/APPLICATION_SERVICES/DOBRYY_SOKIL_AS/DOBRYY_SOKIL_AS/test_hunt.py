@@ -73,8 +73,8 @@ class TestHunt(unittest.TestCase):
         # classification during tests
         test_resources_folder_path = os.getcwd().split("Добрый_Сокол")[0] \
                                      + "Добрый_Сокол" \
-                                     + "\\TESTS\\UNIT_TESTS\\RESOURCES"
-        test_image_resources = test_resources_folder_path + "\\Image"
+                                     + "/TESTS/UNIT_TESTS/RESOURCES"
+        test_image_resources = test_resources_folder_path + "/Image"
 
         # The Folder of Image Resources contains one image containing a "Timber Wolf" named "Wolf.jpg"
         assert len(dobryy_sokil_as_for_the_test.hunt("Timber Wolf", test_image_resources)) == 1
