@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/python:3.9.1
 
-    working_directory: ~/repo
+    working_directory: ~/Добрый_Сокол
 
     steps:
       # Step 1: Obtaining the repository from GitHub
