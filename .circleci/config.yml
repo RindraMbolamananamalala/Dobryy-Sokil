@@ -17,6 +17,7 @@ jobs:
             python -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
+            python -m nltk.downloader wordnet
       # Step 3: Running Integration and Unit Tests
       - run:
           name: Running Integration and Unit Tests
