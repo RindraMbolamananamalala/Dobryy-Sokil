@@ -69,8 +69,8 @@ class TestPredict(unittest.TestCase):
              [ClassifiedImageDTO(test_image_resources, "Wolf", "JPG", ["timber_wolf"])]),
 
             # Image of a Fruits Bowl
-            ([Image(test_image_resources, "FruitsBowl", "JPG")],
-             [ClassifiedImageDTO(test_image_resources, "FruitsBowl", "JPG", ["lemon", "orange", "banana"])])
+            ([Image(test_image_resources, "FruitsBowl", "jpg")],
+             [ClassifiedImageDTO(test_image_resources, "FruitsBowl", "jpg", ["lemon", "orange", "banana"])])
         ]
 
         # An image containing  only a soccer ball contains a "soccer ball", a must not contain a "glue"
