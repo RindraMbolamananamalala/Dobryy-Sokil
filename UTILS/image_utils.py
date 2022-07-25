@@ -24,7 +24,7 @@ def get_all_images_within_a_folder(folder_path: str) -> [str]:
         # A valid Folder path was provided
         possible_image_extensions = ["apng", "avif", "gif", "jpg", "jpeg", "jfif", "pjpeg", "pjp", "png", "svg", "webp"]
         images_to_return = []
-        LOGGER.info(os.listdir("/home/circleci/Добрый_Сокол/TESTS/UNIT_TESTS/RESOURCES"))
+        LOGGER.info(os.listdir("/home/circleci/Добрый_Сокол/TESTS/UNIT_TESTS/RESOURCES/IMAGE"))
         for folder_element in os.walk(folder_path):
             location_path = folder_element[0].replace("\\", "/")
             for file_element in folder_element[2]:
