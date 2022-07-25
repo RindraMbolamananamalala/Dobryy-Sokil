@@ -55,7 +55,7 @@ def dobryy_sokil_view_mocks() -> list:
                                  + "Добрый_Сокол" \
                                  + "/TESTS/INTEGRATION_TESTS/RESOURCES"
     test_image_resources = test_resources_folder_path.replace("\\", "/") \
-                           + "/Image"
+                           + "/IMAGE"
 
     """
     Verifying that a Non-valid information provided by the User will Result to

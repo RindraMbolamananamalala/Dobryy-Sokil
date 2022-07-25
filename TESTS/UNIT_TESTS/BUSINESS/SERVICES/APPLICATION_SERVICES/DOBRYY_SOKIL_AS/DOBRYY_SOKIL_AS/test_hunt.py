@@ -75,7 +75,7 @@ class TestHunt(unittest.TestCase):
                                      + "Добрый_Сокол" \
                                      + "/TESTS/UNIT_TESTS/RESOURCES"
         test_image_resources = test_resources_folder_path.replace("\\", "/") \
-                               + "/Image"
+                               + "/IMAGE"
 
         # The Folder of Image Resources contains one image containing a "Timber Wolf" named "Wolf.jpg"
         assert len(dobryy_sokil_as_for_the_test.hunt("Timber Wolf", test_image_resources)) == 1
