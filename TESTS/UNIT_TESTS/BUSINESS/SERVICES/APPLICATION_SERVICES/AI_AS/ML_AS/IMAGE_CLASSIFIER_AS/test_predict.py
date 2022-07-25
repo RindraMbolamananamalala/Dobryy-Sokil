@@ -61,8 +61,8 @@ class TestPredict(unittest.TestCase):
              [ClassifiedImageDTO(test_image_resources, "Ball", "JPG", ["soccer_ball"])]),
 
             # Image containing a Spider
-            ([Image(test_image_resources, "Spider", "JPG")],
-             [ClassifiedImageDTO(test_image_resources, "Spider", "JPG", ["tarantula"])]),
+            ([Image(test_image_resources, "Spider", "jpg")],
+             [ClassifiedImageDTO(test_image_resources, "Spider", "jpg", ["tarantula"])]),
 
             # Image containing a Wolf
             ([Image(test_image_resources, "Wolf", "JPG")],
